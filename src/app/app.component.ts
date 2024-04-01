@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {StickerCreatorComponent} from "./sticker-creator/sticker-creator.component";
+import {StickerCreatorComponent} from "./components/sticker-creator/sticker-creator.component";
 
 @Component({
   selector: 'app-root',

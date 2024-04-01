@@ -4,7 +4,7 @@ import {MatCheckbox} from "@angular/material/checkbox";
 import {MatExpansionPanelHeader} from "@angular/material/expansion";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
-import {PreSuffix} from "../model/pre-suffix";
+import {PreSuffix} from "../../model/pre-suffix";
 import {NgIf} from "@angular/common";
 import {MatButtonToggle} from "@angular/material/button-toggle";
 import {MatIcon} from "@angular/material/icon";

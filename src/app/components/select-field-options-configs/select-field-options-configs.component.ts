@@ -5,7 +5,7 @@ import {MatIcon} from "@angular/material/icon";
 import {MatIconButton, MatMiniFabButton} from "@angular/material/button";
 import {MatInput} from "@angular/material/input";
 import {NgForOf} from "@angular/common";
-import {SelectFieldOption} from "../model/select-field-option";
+import {SelectFieldOption} from "../../model/select-field-option";
 
 @Component({
   selector: 'app-select-field-options-configs',
