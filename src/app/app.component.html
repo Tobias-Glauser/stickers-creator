@@ -1,1 +1,30 @@
-<app-sticker-creator></app-sticker-creator>
+<mat-toolbar color="primary">
+  <button mat-icon-button class="menu-button" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Stickers</span>
+</mat-toolbar>
+
+<mat-drawer-container class="container">
+  <mat-drawer #sidenav [mode]="window.innerWidth >= 900 ? 'side' : 'over'" [opened]="window.innerWidth >= 900">
+    <nav class="sidenav" (click)="handleSidenavAlwayOpen()">
+      <a routerLinkActive="active" routerLink="creation">
+        <mat-icon>add_circle_outline</mat-icon>
+        <span>Création</span>
+      </a>
+      <a routerLinkActive="active" routerLink="generation">
+        <mat-icon>edit</mat-icon>
+        <span>Génération</span>
+      </a>
+      <a routerLinkActive="active" routerLink="all-stickers">
+        <mat-icon>view_list</mat-icon>
+        <span>Stickers</span>
+      </a>
+    </nav>
+  </mat-drawer>
+  <mat-drawer-content class="drawer-content">
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+<!--<app-sticker-creator></app-sticker-creator>-->

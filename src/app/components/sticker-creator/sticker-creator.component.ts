@@ -8,7 +8,12 @@ import {MatInput, MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {MatCard, MatCardHeader, MatCardModule} from "@angular/material/card";
-import {MatAccordion, MatExpansionPanel, MatExpansionPanelHeader} from "@angular/material/expansion";
+import {
+  MatAccordion,
+  MatExpansionPanel,
+  MatExpansionPanelHeader,
+  MatExpansionPanelTitle
+} from "@angular/material/expansion";
 import {MatDivider} from "@angular/material/divider";
 import {
   MatDatepicker,
@@ -72,7 +77,8 @@ import {CdkScrollable} from "@angular/cdk/overlay";
     CdkDropList,
     CdkDrag,
     CdkDragHandle,
-    CdkScrollable
+    CdkScrollable,
+    MatExpansionPanelTitle
   ],
   templateUrl: './sticker-creator.component.html',
   styleUrl: './sticker-creator.component.scss'
@@ -162,5 +168,9 @@ export class StickerCreatorComponent {
       case "text":
         return 'keyboard'
     }
+  }
+
+  removeField(field: SelectField | TextField | DateField | NumberField) {
+    this.elements = this.elements.filter((currentField) => currentField !== field)
   }
 }
