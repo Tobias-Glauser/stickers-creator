@@ -1,0 +1,29 @@
+<div class="form">
+  <div *ngFor="let element of sticker">
+
+    <mat-form-field *ngIf="element.discriminator === 'text'" appearance="outline">
+      <mat-label>{{ element.common_configs.name }}</mat-label>
+      <input matInput [(ngModel)]="element.value">
+    </mat-form-field>
+
+    <mat-form-field *ngIf="element.discriminator === 'number'" appearance="outline">
+      <mat-label>{{ element.common_configs.name }}</mat-label>
+      <input matInput [(ngModel)]="element.value" type="number">
+    </mat-form-field>
+
+    <mat-form-field *ngIf="element.discriminator === 'select'" appearance="outline">
+      <mat-label>{{ element.common_configs.name }}</mat-label>
+      <mat-select required [(ngModel)]="element.value">
+        <mat-option [value]="option" *ngFor="let option of element.options">{{ option.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="element.discriminator === 'date'" appearance="outline">
+      <mat-label>{{ element.common_configs.name }}</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="element.value">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+</div>

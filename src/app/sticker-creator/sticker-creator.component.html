@@ -1,0 +1,63 @@
+<div class="main-container">
+  <div class="left-side-container" cdkScrollable>
+    <div class="field-container" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListAutoScrollStep]="5">
+      @for (element of elements; track element) {
+        <mat-card cdkDrag>
+          <mat-card-header cdkDragHandle class="dg-handle">
+            <mat-card-title>
+              <mat-icon>{{getIconForFieldType(element.discriminator)}}</mat-icon> {{ element.common_configs.name }} ({{ getFieldType(element.discriminator) }})
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  Préfix
+                </mat-expansion-panel-header>
+                <app-pre-suffix-config [presuffix]="element.common_configs.preffix"></app-pre-suffix-config>
+              </mat-expansion-panel>
+
+              <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                  Configuration du champ
+                </mat-expansion-panel-header>
+                <app-field-commons-configs [field]="element.common_configs"></app-field-commons-configs>
+              </mat-expansion-panel>
+
+              <mat-expansion-panel *ngIf="element.discriminator == 'select'">
+                <mat-expansion-panel-header>
+                  Options
+                </mat-expansion-panel-header>
+                <app-select-field-options-configs [options]="element.options"></app-select-field-options-configs>
+              </mat-expansion-panel>
+
+
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  Suffix
+                </mat-expansion-panel-header>
+                <app-pre-suffix-config [presuffix]="element.common_configs.suffix"></app-pre-suffix-config>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+
+    <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu">
+      <mat-icon>add</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="addItem('text')">Texte</button>
+      <button mat-menu-item (click)="addItem('date')">Date</button>
+      <button mat-menu-item (click)="addItem('select')">Sélection</button>
+      <button mat-menu-item (click)="addItem('number')">Nombre</button>
+    </mat-menu>
+  </div>
+  <mat-divider [vertical]="true"></mat-divider>
+
+  <div>
+    <app-sticker-generation-form [sticker]="elements"></app-sticker-generation-form>
+    <mat-divider></mat-divider>
+    <app-sticker [sticker]="elements"></app-sticker>
+</div>

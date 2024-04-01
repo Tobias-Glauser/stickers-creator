@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import {StickerCreatorComponent} from "./sticker-creator/sticker-creator.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, StickerCreatorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

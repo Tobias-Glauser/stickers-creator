@@ -1,0 +1,16 @@
+<div class="sticker">
+  <div>
+    @for (element of sticker; track element.common_configs.name) {
+      <div *ngIf="!element.common_configs.preffix.inlined">{{element.common_configs.preffix.name}}</div>
+      <div>
+        <span *ngIf="element.common_configs.preffix.inlined && element.common_configs.preffix.name.length > 0">{{element.common_configs.preffix.name}}&nbsp;</span>
+        <span *ngIf="element.discriminator === 'text'">{{element.value || element.common_configs.name}}</span>
+        <span *ngIf="element.discriminator === 'number'">{{element.value?.toString() || element.common_configs.name}}</span>
+        <span *ngIf="element.discriminator === 'select'">{{element.value?.name || element.common_configs.name}}</span>
+        <span *ngIf="element.discriminator === 'date'">{{getDate(element.value)|| element.common_configs.name}}</span>
+        <span *ngIf="element.common_configs.suffix.inlined">&nbsp;{{element.common_configs.suffix.name}}</span>
+      </div>
+      <div *ngIf="!element.common_configs.suffix.inlined">{{element.common_configs.suffix.name}}</div>
+    }
+  </div>
+</div>

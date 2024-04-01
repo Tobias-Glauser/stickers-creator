@@ -1,0 +1,14 @@
+<div *ngFor="let option of options">
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Option</mat-label>
+      <input matInput [(ngModel)]="option.name">
+    </mat-form-field>
+    <button mat-icon-button color="primary" (click)="removeOption(option)">
+      <mat-icon>remove</mat-icon>
+    </button>
+  </div>
+</div>
+<button mat-mini-fab color="primary" (click)="addOption()">
+  <mat-icon>add</mat-icon>
+</button>

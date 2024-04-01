@@ -1,0 +1,10 @@
+<mat-form-field *ngIf="presuffix" appearance="outline">
+  <mat-label>{{ getType() }}</mat-label>
+  <input matInput [(ngModel)]="presuffix.name">
+</mat-form-field>
+<mat-button-toggle matTooltip="{{getType()}} et contenu aligné"
+                   [checked]="presuffix.inlined"
+                   (change)="presuffix.inlined = $event.source.checked"
+                   *ngIf="presuffix">
+  <mat-icon>wrap_text</mat-icon>
+</mat-button-toggle>
