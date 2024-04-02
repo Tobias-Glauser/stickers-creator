@@ -1,0 +1,103 @@
+@if (sticker) {
+  <mat-form-field appearance="outline" class="sticker-name">
+    <mat-label>Nom du sticker</mat-label>
+    <input matInput [(ngModel)]="sticker.name">
+  </mat-form-field>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Espacement
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="two-elements-per-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Haut</mat-label>
+          <input matInput type="number" [(ngModel)]="sticker.global_design.paddings.top">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Bas</mat-label>
+          <input matInput type="number" [(ngModel)]="sticker.global_design.paddings.bottom">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Gauche</mat-label>
+          <input matInput type="number" [(ngModel)]="sticker.global_design.paddings.left">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Droite</mat-label>
+          <input matInput type="number" [(ngModel)]="sticker.global_design.paddings.right">
+        </mat-form-field>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Texte
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="two-elements-per-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Police</mat-label>
+          <mat-select [(ngModel)]="sticker.global_design.text.police.name">
+            <mat-option [value]="font" *ngFor="let font of fontList">{{ font }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Taille</mat-label>
+          <input matInput type="number" [(ngModel)]="sticker.global_design.text.police.size">
+        </mat-form-field>
+        <div>
+          <mat-button-toggle-group multiple="true" class="no-check" hideMultipleSelectionIndicator>
+            <mat-button-toggle matTooltip="Gras"
+                               [checked]="sticker.global_design.text.bold"
+                               (change)="sticker.global_design.text.bold = $event.source.checked">
+              <mat-icon>format_bold</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle matTooltip="Italique"
+                               [checked]="sticker.global_design.text.italic"
+                               (change)="sticker.global_design.text.italic = $event.source.checked">
+              <mat-icon>format_italic</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle matTooltip="Souligné"
+                               [checked]="sticker.global_design.text.underline"
+                               (change)="sticker.global_design.text.underline = $event.source.checked">
+              <mat-icon>format_underline</mat-icon>
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <div>
+          <mat-button-toggle-group class="no-check" hideSingleSelectionIndicator [(ngModel)]="sticker.global_design.text.horizontal_alignment">
+            <mat-button-toggle matTooltip="Aligné à gauche" value="left">
+              <mat-icon>format_align_left</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle matTooltip="Centré" value="center">
+              <mat-icon>format_align_center</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle matTooltip="Aligné à droite" value="right">
+              <mat-icon>format_align_right</mat-icon>
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <div>
+          <mat-button-toggle-group class="no-check" hideSingleSelectionIndicator [(ngModel)]="sticker.global_design.text.vertical_alignment">
+            <mat-button-toggle matTooltip="Aligné verticalement en haut" value="flex-start">
+              <mat-icon>align_vertical_top</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle matTooltip="Aligné verticalement au centre" value="center">
+              <mat-icon>align_vertical_center</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle matTooltip="Aligné verticalement en bas" value="flex-end">
+              <mat-icon>align_vertical_bottom</mat-icon>
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <div class="color-selctors">
+          <ngx-colors ngx-colors-trigger [(ngModel)]="sticker.global_design.background_color" matTooltip="Couleur de fond"></ngx-colors>
+          <ngx-colors ngx-colors-trigger [(ngModel)]="sticker.global_design.text.police.color" matTooltip="Couleur de texte"></ngx-colors>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+}
+
+

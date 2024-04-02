@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatIconButton, MatMiniFabButton} from "@angular/material/button";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
@@ -36,6 +36,9 @@ import {StickerGenerationFormComponent} from "../sticker-generation-form/sticker
 import {StickerComponent} from "../sticker/sticker.component";
 import {CdkDrag, CdkDragDrop, CdkDragHandle, CdkDropList, moveItemInArray} from "@angular/cdk/drag-drop";
 import {CdkScrollable} from "@angular/cdk/overlay";
+import {GeneralStickerConfigsComponent} from "../general-sticker-configs/general-sticker-configs.component";
+import {Sticker} from "../../model/sticker";
+import {StickerFieldDesign} from "../../model/sticker-field-design";
 
 @Component({
   selector: 'app-sticker-creator',
@@ -78,14 +81,63 @@ import {CdkScrollable} from "@angular/cdk/overlay";
     CdkDrag,
     CdkDragHandle,
     CdkScrollable,
-    MatExpansionPanelTitle
+    MatExpansionPanelTitle,
+    GeneralStickerConfigsComponent
   ],
   templateUrl: './sticker-creator.component.html',
   styleUrl: './sticker-creator.component.scss'
 })
 export class StickerCreatorComponent {
 
-  elements: (SelectField | TextField | DateField | NumberField)[] = []
+  @Input() sticker: Sticker = {
+    name: 'Sticker sans nom',
+    global_design: {
+      paddings: {
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+      },
+      text: {
+        bold: false,
+        underline: false,
+        italic: false,
+        police: {
+          name: 'Helvetica',
+          size: 17,
+          color: ''
+        },
+        horizontal_alignment: 'left',
+        vertical_alignment: 'flex-start',
+      },
+      background_color: '',
+      background_image: null
+    },
+    fields: []
+  }
+
+  defaultFieldDesign: StickerFieldDesign = {
+    paddings: {
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+    },
+    background: '',
+    text: {
+      bold: false,
+      italic: false,
+      underline: false,
+      inherit: true,
+      vertical_alignment: 'flex-start',
+      horizontal_alignment: 'inherit',
+      police: {
+        name: null,
+        size: 0,
+        color: ''
+      }
+    }
+  }
 
   addItem(selection: string) {
     let infos: FieldCommonConfigs = {
@@ -93,18 +145,21 @@ export class StickerCreatorComponent {
       preffix: {
         discriminator: 'prefix',
         name: '',
-        inlined: true
+        inlined: true,
+        design: structuredClone(this.defaultFieldDesign)
       },
       suffix: {
         discriminator: 'suffix',
         name: '',
-        inlined: true
-      }
+        inlined: true,
+        design: structuredClone(this.defaultFieldDesign)
+      },
+      design: structuredClone(this.defaultFieldDesign)
     }
 
     switch (selection) {
       case 'select': {
-        this.elements.push({
+        this.sticker.fields.push({
           discriminator: 'select',
           common_configs: infos,
           options: [],
@@ -113,7 +168,7 @@ export class StickerCreatorComponent {
         break
       }
       case 'number': {
-        this.elements.push({
+        this.sticker.fields.push({
           discriminator: 'number',
           common_configs: infos,
           value: null
@@ -121,7 +176,7 @@ export class StickerCreatorComponent {
         break
       }
       case 'date': {
-        this.elements.push({
+        this.sticker.fields.push({
           discriminator: 'date',
           common_configs: infos,
           value: null
@@ -129,7 +184,7 @@ export class StickerCreatorComponent {
         break
       }
       default: {
-        this.elements.push({
+        this.sticker.fields.push({
           discriminator: 'text',
           common_configs: infos,
           value: null
@@ -139,7 +194,7 @@ export class StickerCreatorComponent {
   }
 
   drop(event: CdkDragDrop<(SelectField | TextField | DateField | NumberField)[]>) {
-    moveItemInArray(this.elements, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.sticker.fields, event.previousIndex, event.currentIndex);
   }
 
   protected readonly structuredClone = structuredClone;
@@ -171,6 +226,6 @@ export class StickerCreatorComponent {
   }
 
   removeField(field: SelectField | TextField | DateField | NumberField) {
-    this.elements = this.elements.filter((currentField) => currentField !== field)
+    this.sticker.fields = this.sticker.fields.filter((currentField) => currentField !== field)
   }
 }

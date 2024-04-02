@@ -1,4 +1,7 @@
-<mat-form-field *ngIf="field" appearance="outline">
-  <mat-label>Nom</mat-label>
-  <input matInput [(ngModel)]="field.name">
-</mat-form-field>
+<div>
+  <mat-form-field *ngIf="field" appearance="outline">
+    <mat-label>Nom</mat-label>
+    <input matInput [(ngModel)]="field.name">
+  </mat-form-field>
+  <app-sticker-field-config [design]="field?.design"></app-sticker-field-config>
+</div>

@@ -4,6 +4,8 @@ import {TextField} from "../../model/text-field";
 import {NumberField} from "../../model/number-field";
 import {DateField} from "../../model/date-field";
 import {SelectField} from "../../model/select-field";
+import {Sticker} from "../../model/sticker";
+import {Paddings} from "../../model/paddings";
 
 @Component({
   selector: 'app-sticker',
@@ -15,12 +17,23 @@ import {SelectField} from "../../model/select-field";
   styleUrl: './sticker.component.scss'
 })
 export class StickerComponent {
-  @Input({required: true}) sticker: (TextField | NumberField | DateField | SelectField)[] = []
+  @Input({required: true}) sticker: Sticker | undefined
+  @Input() generation: boolean = false
 
-  getDate(date: Date | null) {
-    if (date === null) {
-      return null
+  getPaddings(paddings: Paddings) {
+    return paddings.top + 'px ' + paddings.right + 'px ' + paddings.bottom + 'px ' + paddings.left + 'px '
+  }
+
+  getFieldText(field: DateField | NumberField | TextField | SelectField) {
+    switch (field.discriminator) {
+      case "text":
+        return field.value || (this.generation ? '' : field.common_configs.name)
+      case "number":
+        return field.value?.toString() || (this.generation ? '' : field.common_configs.name)
+      case "date":
+        return field.value?.toLocaleDateString() || (this.generation ? '' : field.common_configs.name)
+      case "select":
+        return field.value?.name || (this.generation ? '' : field.common_configs.name)
     }
-    return date.toLocaleDateString()
   }
 }

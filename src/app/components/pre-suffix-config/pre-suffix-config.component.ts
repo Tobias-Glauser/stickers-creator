@@ -9,6 +9,10 @@ import {NgIf} from "@angular/common";
 import {MatButtonToggle} from "@angular/material/button-toggle";
 import {MatIcon} from "@angular/material/icon";
 import {MatTooltip} from "@angular/material/tooltip";
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
+import {MatMiniFabButton} from "@angular/material/button";
+import {GeneralStickerConfigsComponent} from "../general-sticker-configs/general-sticker-configs.component";
+import {StickerFieldConfigComponent} from "../sticker-field-config/sticker-field-config.component";
 
 @Component({
   selector: 'app-pre-suffix-config',
@@ -23,7 +27,13 @@ import {MatTooltip} from "@angular/material/tooltip";
     NgIf,
     MatButtonToggle,
     MatIcon,
-    MatTooltip
+    MatTooltip,
+    MatMenu,
+    MatMenuItem,
+    MatMiniFabButton,
+    MatMenuTrigger,
+    GeneralStickerConfigsComponent,
+    StickerFieldConfigComponent
   ],
   templateUrl: './pre-suffix-config.component.html',
   styleUrl: './pre-suffix-config.component.scss'

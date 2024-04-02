@@ -6,6 +6,7 @@
           Configurations globales
         </mat-panel-title>
       </mat-expansion-panel-header>
+      <app-general-sticker-configs [sticker]="sticker"></app-general-sticker-configs>
     </mat-expansion-panel>
     <mat-expansion-panel class="fields-mat-panel">
       <mat-expansion-panel-header>
@@ -15,7 +16,7 @@
       </mat-expansion-panel-header>
       <div cdkScrollable>
         <mat-accordion class="field-container" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListAutoScrollStep]="5">
-          @for (element of elements; track element) {
+          @for (element of sticker.fields; track element) {
             <mat-expansion-panel cdkDrag class="field-mat-card" hideToggle>
               <mat-expansion-panel-header cdkDragHandle class="dg-handle field-mat-panel-header">
                 <mat-panel-title>
@@ -79,7 +80,7 @@
         </mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <app-sticker-generation-form [sticker]="elements"></app-sticker-generation-form>
+        <app-sticker-generation-form [sticker]="sticker.fields"></app-sticker-generation-form>
       </mat-card-content>
     </mat-card>
     <mat-card>
@@ -89,7 +90,7 @@
         </mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <app-sticker [sticker]="elements"></app-sticker>
+        <app-sticker [sticker]="sticker"></app-sticker>
       </mat-card-content>
     </mat-card>
   </div>
