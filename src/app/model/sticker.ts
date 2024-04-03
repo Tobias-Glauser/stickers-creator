@@ -3,8 +3,12 @@ import {TextField} from "./text-field";
 import {DateField} from "./date-field";
 import {NumberField} from "./number-field";
 import {Paddings} from "./paddings";
+import {Image} from "./image";
+import {Color} from "./color";
+import {Size} from "./size";
 
 export interface Sticker {
+  size: Size,
   name: string,
   global_design: GlobalStickerDesign
   fields: (SelectField | TextField | DateField | NumberField)[]
@@ -28,6 +32,5 @@ export interface TextConfig {
 export interface GlobalStickerDesign {
   paddings: Paddings,
   text: TextConfig,
-  background_color: string,
-  background_image: null
+  backgrounds: (Image | Color)[]
 }

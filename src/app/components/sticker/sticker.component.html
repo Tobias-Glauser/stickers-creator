@@ -1,7 +1,8 @@
-<div class="sticker" *ngIf="sticker">
+<div class="sticker" *ngIf="sticker"
+     [style.width]="'calc('+sticker.size.size_x + 'cm/'+sticker.size.horizontal_number + ')'"
+     [style.height]="'calc('+sticker.size.size_y + 'cm/'+sticker.size.vertical_number + ')'">
   <div [style.padding]="StickerService.getPaddings(sticker.global_design.paddings)"
        [style.align-items]="sticker.global_design.text.vertical_alignment"
-       [style.background-color]="sticker.global_design.background_color"
        [style.color]="sticker.global_design.text.police.color"
        [style.font-weight]="sticker.global_design.text.bold ? 'bold':'normal'"
        [style.font-style]="sticker.global_design.text.italic ? 'italic':'normal'"
@@ -14,4 +15,15 @@
       }
     </div>
   </div>
+<!--  @for (background of sticker.global_design.backgrounds) {-->
+<!--    @if () {-->
+<!--      <div [style.background-image]="" ]>-->
+<!--        -->
+<!--      </div>-->
+<!--    } @else {-->
+<!--      <div>-->
+<!--        -->
+<!--      </div>-->
+<!--    }-->
+<!--  }-->
 </div>

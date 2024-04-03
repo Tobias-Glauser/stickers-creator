@@ -40,6 +40,11 @@ import {GeneralStickerConfigsComponent} from "../general-sticker-configs/general
 import {Sticker} from "../../model/sticker";
 import {StickerFieldDesign} from "../../model/sticker-field-design";
 import {StickerService} from "../../sticker.service";
+import {Color} from "../../model/color";
+import {Image} from "../../model/image";
+import {ColorConfigsComponent} from "../color-configs/color-configs.component";
+import {ImageConfigComponent} from "../image-config/image-config.component";
+import {StickerSizeService} from "../../sticker-size.service";
 
 @Component({
   selector: 'app-sticker-creator',
@@ -83,7 +88,9 @@ import {StickerService} from "../../sticker.service";
     CdkDragHandle,
     CdkScrollable,
     MatExpansionPanelTitle,
-    GeneralStickerConfigsComponent
+    GeneralStickerConfigsComponent,
+    ColorConfigsComponent,
+    ImageConfigComponent
   ],
   templateUrl: './sticker-creator.component.html',
   styleUrl: './sticker-creator.component.scss'
@@ -92,6 +99,12 @@ export class StickerCreatorComponent {
 
   @Input() sticker: Sticker = {
     name: 'Sticker sans nom',
+    size: {
+      size_x: 21.0,
+      size_y: 29.7,
+      horizontal_number: 3,
+      vertical_number: 8
+    },
     global_design: {
       paddings: {
         left: 0,
@@ -111,8 +124,7 @@ export class StickerCreatorComponent {
         horizontal_alignment: 'left',
         vertical_alignment: 'flex-start',
       },
-      background_color: '',
-      background_image: null
+      backgrounds: []
     },
     fields: []
   }
@@ -138,6 +150,15 @@ export class StickerCreatorComponent {
         color: ''
       }
     }
+  }
+
+  constructor(
+    private StickerSizeService: StickerSizeService
+  ) {
+  }
+
+  ngOnInit() {
+    this.StickerSizeService.setSize(this.sticker.size)
   }
 
   addItem(selection: string) {
@@ -194,7 +215,52 @@ export class StickerCreatorComponent {
     }
   }
 
-  drop(event: CdkDragDrop<(SelectField | TextField | DateField | NumberField)[]>) {
+  addBackground(selection: string) {
+    switch (selection) {
+      case 'color': {
+        this.sticker.global_design.backgrounds.push({
+          discriminator: 'color',
+          name: 'sans nom',
+          value: '',
+          style: {
+            paddings: {
+              left: 0,
+              top: 0,
+            },
+            size: {
+              x: 400,
+              y: 400,
+            }
+          }
+        } as Color)
+        break
+      }
+      default: {
+        this.sticker.global_design.backgrounds.push({
+          discriminator: 'image',
+          name: "Pas d'image",
+          type: '',
+          file: '',
+          style: {
+            paddings: {
+              left: 0,
+              top: 0,
+            },
+            size: {
+              x: 0,
+              y: 0,
+            }
+          }
+        } as Image)
+      }
+    }
+  }
+
+  dropBackground(event: CdkDragDrop<(Color | Image)[]>) {
+    moveItemInArray(this.sticker.global_design.backgrounds, event.previousIndex, event.currentIndex);
+  }
+
+  dropItem(event: CdkDragDrop<(SelectField | TextField | DateField | NumberField)[]>) {
     moveItemInArray(this.sticker.fields, event.previousIndex, event.currentIndex);
   }
 
@@ -228,5 +294,9 @@ export class StickerCreatorComponent {
 
   removeField(field: SelectField | TextField | DateField | NumberField) {
     this.sticker.fields = this.sticker.fields.filter((currentField) => currentField !== field)
+  }
+
+  removeBackground(field: Color | Image) {
+    this.sticker.global_design.backgrounds = this.sticker.global_design.backgrounds.filter((currentField) => currentField !== field)
   }
 }

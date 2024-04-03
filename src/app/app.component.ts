@@ -24,7 +24,7 @@ export class AppComponent {
   }
 
   handleSidenavAlwayOpen() {
-    if (window.innerWidth >= 900) {
+    if (window.innerWidth >= 1035) {
       this.sidenav?.open()
     } else {
       this.sidenav?.close()

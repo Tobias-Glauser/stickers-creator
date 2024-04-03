@@ -1,0 +1,15 @@
+<div class="image-selection">
+  <input #imageInput hidden="hidden" type="file" onclick="this.value=null" (change)="onImageChange($event)" accept="image/*"/>
+  <button mat-flat-button color="primary" (click)="imageInput.click()"><mat-icon>attachment</mat-icon>Image</button>
+  <div *ngIf="image && image.file">
+    <span  class="image-name">{{image.name}}</span>
+    <button mat-icon-button (click)="onImageRemove()">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+  <app-image-styling [imageStyle]="image.style" [sizingEnabled]="!background" *ngIf="image && image.file"></app-image-styling>
+</div>
+
+
+
+

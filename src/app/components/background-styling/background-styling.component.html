@@ -1,0 +1,81 @@
+@if (backgroundStyle) {
+  <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Configurer le style de l'image">
+    <mat-icon>open_in_new</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" xPosition="before" class="menu">
+    <div (click)="$event.stopPropagation()">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Espacement
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="two-elements-per-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Haut</mat-label>
+              <input matInput type="number" [(ngModel)]="backgroundStyle.paddings.top">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Bas</mat-label>
+              <input matInput type="number" [ngModel]="StickerSizeService.getPixelSizeY() - backgroundStyle.size.y - backgroundStyle.paddings.top" [disabled]="true">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Gauche</mat-label>
+              <input matInput type="number" [(ngModel)]="backgroundStyle.paddings.left">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Droite</mat-label>
+              <input matInput type="number" [disabled]="true"
+                     [value]="StickerSizeService.getPixelSizeX() - backgroundStyle.size.x - backgroundStyle.paddings.left">
+            </mat-form-field>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Style
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            <mat-label>Conserver les proportions</mat-label>
+            <mat-slide-toggle [checked]="true" #keepAspectRatio></mat-slide-toggle>
+          </div>
+          <div>
+            <mat-label>Largeur</mat-label>
+            <mat-slider [min]="backgroundStyle.size.y/backgroundStyle.size.x > 0 ? backgroundStyle.size.y/backgroundStyle.size.x : 1"
+                        [max]="StickerSizeService.getPixelSizeX() * 2" step="1" >
+              <input matSliderThumb [ngModel]="backgroundStyle.size.x"
+                     (ngModelChange)="onWidthChange($event, keepAspectRatio.checked)">
+            </mat-slider>
+          </div>
+          <div>
+            <mat-label>Hauteur</mat-label>
+            <mat-slider [min]="backgroundStyle.size.x/backgroundStyle.size.y > 0 ? backgroundStyle.size.x/backgroundStyle.size.y : 1"
+                        [max]="StickerSizeService.getPixelSizeY() * 2" step="1" [displayWith]="displayWith">
+              <input matSliderThumb [ngModel]="backgroundStyle.size.y"
+                     (ngModelChange)="onHeightChange($event, keepAspectRatio.checked)">
+            </mat-slider>
+          </div>
+          <div>
+            <mat-button-toggle-group class="no-check" hideSingleSelectionIndicator>
+              <mat-button-toggle matTooltip="Remplir"
+                                 [checked]="isCover()"
+                                 (change)="$event.source.checked ? updateCoverSize(): ''">
+                <mat-icon>fit_screen</mat-icon>
+              </mat-button-toggle>
+              <mat-button-toggle matTooltip="Image complète"
+                                 [checked]="isContain()"
+                                 (change)="$event.source.checked ? updateContainSize(): ''">
+                <mat-icon>fullscreen</mat-icon>
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </mat-menu>
+}
+
+
+

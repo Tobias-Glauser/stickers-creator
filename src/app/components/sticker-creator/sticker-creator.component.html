@@ -8,6 +8,51 @@
       </mat-expansion-panel-header>
       <app-general-sticker-configs [sticker]="sticker"></app-general-sticker-configs>
     </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Fonds
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div cdkScrollable>
+        <mat-accordion class="field-container" cdkDropList (cdkDropListDropped)="dropBackground($event)" [cdkDropListAutoScrollStep]="5">
+          @for (background of sticker.global_design.backgrounds; track background) {
+            @if (background.discriminator === 'color') {
+              <mat-expansion-panel cdkDrag class="field-mat-card" hideToggle>
+                <mat-expansion-panel-header cdkDragHandle class="dg-handle field-mat-panel-header">
+                  <mat-panel-title>
+                    <mat-icon>palette</mat-icon> {{ background.name }} (Couleur)
+                  </mat-panel-title>
+                  <button mat-icon-button (click)="removeBackground(background)">
+                    <mat-icon>clear</mat-icon>
+                  </button>
+                </mat-expansion-panel-header>
+                <app-color-configs [color]="background"></app-color-configs>
+              </mat-expansion-panel>
+            } @else {
+              <mat-expansion-panel cdkDrag class="field-mat-card" hideToggle>
+                <mat-expansion-panel-header cdkDragHandle class="dg-handle field-mat-panel-header">
+                  <mat-panel-title>
+                    <mat-icon>insert_photo</mat-icon> {{ background.name }} (Image)
+                  </mat-panel-title>
+                  <button mat-icon-button (click)="removeBackground(background)">
+                    <mat-icon>clear</mat-icon>
+                  </button>
+                </mat-expansion-panel-header>
+                <app-image-config [image]="background" [background]="true"></app-image-config>
+              </mat-expansion-panel>
+            }
+          }
+        </mat-accordion>
+        <button mat-mini-fab color="primary" [matMenuTriggerFor]="menuBackground">
+          <mat-icon>add</mat-icon>
+        </button>
+        <mat-menu #menuBackground="matMenu">
+          <button mat-menu-item (click)="addBackground('color')">Couleur</button>
+          <button mat-menu-item (click)="addBackground('image')">Image</button>
+        </mat-menu>
+      </div>
+    </mat-expansion-panel>
     <mat-expansion-panel class="fields-mat-panel">
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -15,7 +60,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div cdkScrollable>
-        <mat-accordion class="field-container" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListAutoScrollStep]="5">
+        <mat-accordion class="field-container" cdkDropList (cdkDropListDropped)="dropItem($event)" [cdkDropListAutoScrollStep]="5">
           @for (element of sticker.fields; track element) {
             <mat-expansion-panel cdkDrag class="field-mat-card" hideToggle>
               <mat-expansion-panel-header cdkDragHandle class="dg-handle field-mat-panel-header">

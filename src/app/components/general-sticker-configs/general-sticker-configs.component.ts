@@ -17,6 +17,8 @@ import {MatTooltip} from "@angular/material/tooltip";
 import {Sticker} from "../../model/sticker";
 import {FormsModule} from "@angular/forms";
 import {NgxColorsModule, NgxColorsTriggerDirective} from "ngx-colors";
+import {ImageConfigComponent} from "../image-config/image-config.component";
+import {MatDivider} from "@angular/material/divider";
 
 @Component({
   selector: 'app-general-sticker-configs',
@@ -41,7 +43,9 @@ import {NgxColorsModule, NgxColorsTriggerDirective} from "ngx-colors";
     MatTooltip,
     NgIf,
     FormsModule,
-    NgxColorsModule
+    NgxColorsModule,
+    ImageConfigComponent,
+    MatDivider
   ],
   templateUrl: './general-sticker-configs.component.html',
   styleUrl: './general-sticker-configs.component.scss'

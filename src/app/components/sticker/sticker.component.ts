@@ -23,4 +23,8 @@ export class StickerComponent {
     public StickerService: StickerService
   ) {
   }
+
+  getImageUrlProperty(imageData: string) {
+    return "url('" + imageData + "')"
+  }
 }

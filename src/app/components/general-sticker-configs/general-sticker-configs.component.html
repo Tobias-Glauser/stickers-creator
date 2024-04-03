@@ -91,12 +91,25 @@
             </mat-button-toggle>
           </mat-button-toggle-group>
         </div>
-        <div class="color-selctors">
-          <ngx-colors ngx-colors-trigger [(ngModel)]="sticker.global_design.background_color" matTooltip="Couleur de fond"></ngx-colors>
+        <div class="color-selectors">
           <ngx-colors ngx-colors-trigger [(ngModel)]="sticker.global_design.text.police.color" matTooltip="Couleur de texte"></ngx-colors>
         </div>
       </div>
     </mat-expansion-panel>
+<!--    <mat-expansion-panel>-->
+<!--      <mat-expansion-panel-header>-->
+<!--        <mat-panel-title>-->
+<!--          Fond-->
+<!--        </mat-panel-title>-->
+<!--      </mat-expansion-panel-header>-->
+<!--      <div class="background">-->
+<!--        <div class="color-configs-selectors">-->
+<!--          <ngx-colors ngx-colors-trigger [(ngModel)]="sticker.global_design.background_color" matTooltip="Couleur de fond"></ngx-colors>-->
+<!--        </div>-->
+<!--        <mat-divider></mat-divider>-->
+<!--        <app-image-config [(image)]="sticker.global_design.background_image.image"></app-image-config>-->
+<!--      </div>-->
+<!--    </mat-expansion-panel>-->
   </mat-accordion>
 }
 

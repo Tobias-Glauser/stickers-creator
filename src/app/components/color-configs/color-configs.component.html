@@ -1,0 +1,10 @@
+<div *ngIf="color">
+  <mat-form-field appearance="outline">
+    <mat-label>Nom</mat-label>
+    <input matInput [(ngModel)]="color.name">
+  </mat-form-field>
+  <div class="color-selectors">
+    <ngx-colors ngx-colors-trigger [(ngModel)]="color.value" matTooltip="Sélection de la couleur"></ngx-colors>
+  </div>
+  <app-background-styling [backgroundStyle]="color.style"></app-background-styling>
+</div>

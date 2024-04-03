@@ -6,7 +6,7 @@
 </mat-toolbar>
 
 <mat-drawer-container class="container">
-  <mat-drawer #sidenav [mode]="window.innerWidth >= 900 ? 'side' : 'over'" [opened]="window.innerWidth >= 900">
+  <mat-drawer #sidenav [mode]="window.innerWidth >= 1035 ? 'side' : 'over'" [opened]="window.innerWidth >= 1035">
     <nav class="sidenav" (click)="handleSidenavAlwayOpen()">
       <a routerLinkActive="active" routerLink="creation">
         <mat-icon>add_circle_outline</mat-icon>
@@ -26,5 +26,3 @@
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>
-
-<!--<app-sticker-creator></app-sticker-creator>-->
