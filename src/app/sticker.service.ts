@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
+import {Paddings} from "./model/paddings";
+import {DateField} from "./model/date-field";
+import {NumberField} from "./model/number-field";
+import {TextField} from "./model/text-field";
+import {SelectField} from "./model/select-field";
 
 @Injectable({
   providedIn: 'root'
 })
-export class FontService {
+export class StickerService {
 
   constructor() { }
 
@@ -58,5 +63,22 @@ export class FontService {
 
   getFontsList() {
     return this.fontList.sort()
+  }
+
+  getPaddings(paddings: Paddings) {
+    return paddings.top + 'px ' + paddings.right + 'px ' + paddings.bottom + 'px ' + paddings.left + 'px '
+  }
+
+  getFieldText(field: DateField | NumberField | TextField | SelectField, generation: boolean) {
+    switch (field.discriminator) {
+      case "text":
+        return field.value || (generation ? '' : field.common_configs.name)
+      case "number":
+        return field.value?.toString() || (generation ? '' : field.common_configs.name)
+      case "date":
+        return field.value?.toLocaleDateString() || (generation ? '' : field.common_configs.name)
+      case "select":
+        return field.value?.name || (generation ? '' : field.common_configs.name)
+    }
   }
 }

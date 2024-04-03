@@ -1,5 +1,5 @@
 <div class="sticker" *ngIf="sticker">
-  <div [style.padding]="getPaddings(sticker.global_design.paddings)"
+  <div [style.padding]="StickerService.getPaddings(sticker.global_design.paddings)"
        [style.align-items]="sticker.global_design.text.vertical_alignment"
        [style.background-color]="sticker.global_design.background_color"
        [style.color]="sticker.global_design.text.police.color"
@@ -10,62 +10,7 @@
        [style.font-size]="sticker.global_design.text.police.size.toString() + 'px'">
     <div class="sticker-field-full-width">
       @for (element of sticker.fields; track element.common_configs.name) {
-        <div *ngIf="!element.common_configs.preffix.inlined"
-             [style.padding]="getPaddings(element.common_configs.preffix.design.paddings)"
-             [style.background-color]="element.common_configs.preffix.design.background"
-             [style.color]="element.common_configs.preffix.design.text.police.color"
-             [style.font-weight]="element.common_configs.preffix.design.text.bold ? 'bold':element.common_configs.preffix.design.text.inherit ? '':'normal'"
-             [style.font-style]="element.common_configs.preffix.design.text.italic ? 'italic':element.common_configs.preffix.design.text.inherit ? '':'normal'"
-             [style.text-decoration]="element.common_configs.preffix.design.text.underline ? 'underline':element.common_configs.preffix.design.text.inherit ? '':'unset'"
-             [style.text-align]="element.common_configs.preffix.design.text.horizontal_alignment === 'inherit' ? sticker.global_design.text.horizontal_alignment : element.common_configs.preffix.design.text.horizontal_alignment"
-             [style.font-family]="element.common_configs.preffix.design.text.police.name"
-             [style.font-size]="element.common_configs.preffix.design.text.police.size === 0 ? '': element.common_configs.preffix.design.text.police.size.toString() + 'px'">
-          {{element.common_configs.preffix.name}}</div>
-        <div class="sticker-field-container"
-          [style.align-items]="element.common_configs.design.text.vertical_alignment"
-          [style.justify-content]="element.common_configs.design.text.horizontal_alignment === 'inherit' ? sticker.global_design.text.horizontal_alignment : element.common_configs.design.text.horizontal_alignment">
-          <span *ngIf="element.common_configs.preffix.inlined && element.common_configs.preffix.name.length > 0"
-                [style.padding]="getPaddings(element.common_configs.preffix.design.paddings)"
-                [style.background-color]="element.common_configs.preffix.design.background"
-                [style.color]="element.common_configs.preffix.design.text.police.color"
-                [style.font-weight]="element.common_configs.preffix.design.text.bold ? 'bold':element.common_configs.preffix.design.text.inherit ? '':'normal'"
-                [style.font-style]="element.common_configs.preffix.design.text.italic ? 'italic':element.common_configs.preffix.design.text.inherit ? '':'normal'"
-                [style.text-decoration]="element.common_configs.preffix.design.text.underline ? 'underline':element.common_configs.preffix.design.text.inherit ? '':'unset'"
-                [style.font-family]="element.common_configs.preffix.design.text.police.name"
-                [style.font-size]="element.common_configs.preffix.design.text.police.size === 0 ? '': element.common_configs.preffix.design.text.police.size.toString() + 'px'"
-          >{{element.common_configs.preffix.name}}&nbsp;</span>
-          <span [style.padding]="getPaddings(element.common_configs.design.paddings)"
-                [style.background-color]="element.common_configs.design.background"
-                [style.color]="element.common_configs.design.text.police.color"
-                [style.font-weight]="element.common_configs.design.text.bold ? 'bold':element.common_configs.design.text.inherit ? '':'normal'"
-                [style.font-style]="element.common_configs.design.text.italic ? 'italic':element.common_configs.design.text.inherit ? '':'normal'"
-                [style.text-decoration]="element.common_configs.design.text.underline ? 'underline':element.common_configs.design.text.inherit ? '':'unset'"
-                [style.font-family]="element.common_configs.design.text.police.name"
-                [style.font-size]="element.common_configs.design.text.police.size === 0 ? '': element.common_configs.design.text.police.size.toString() + 'px'"
-          >{{getFieldText(element)}}</span>
-          <span *ngIf="element.common_configs.suffix.inlined && element.common_configs.suffix.name.length > 0"
-                [style.padding]="getPaddings(element.common_configs.suffix.design.paddings)"
-                [style.background-color]="element.common_configs.suffix.design.background"
-                [style.color]="element.common_configs.suffix.design.text.police.color"
-                [style.font-weight]="element.common_configs.suffix.design.text.bold ? 'bold':element.common_configs.suffix.design.text.inherit ? '':'normal'"
-                [style.font-style]="element.common_configs.suffix.design.text.italic ? 'italic':element.common_configs.suffix.design.text.inherit ? '':'normal'"
-                [style.text-decoration]="element.common_configs.suffix.design.text.underline ? 'underline':element.common_configs.suffix.design.text.inherit ? '':'unset'"
-                [style.font-family]="element.common_configs.suffix.design.text.police.name"
-                [style.font-size]="element.common_configs.suffix.design.text.police.size === 0 ? '': element.common_configs.suffix.design.text.police.size.toString() + 'px'"
-          >&nbsp;{{element.common_configs.suffix.name}}</span>
-        </div>
-        <div *ngIf="!element.common_configs.suffix.inlined"
-             [style.padding]="getPaddings(element.common_configs.suffix.design.paddings)"
-             [style.background-color]="element.common_configs.suffix.design.background"
-             [style.color]="element.common_configs.suffix.design.text.police.color"
-             [style.font-weight]="element.common_configs.suffix.design.text.bold ? 'bold':element.common_configs.suffix.design.text.inherit ? '':'normal'"
-             [style.font-style]="element.common_configs.suffix.design.text.italic ? 'italic':element.common_configs.suffix.design.text.inherit ? '':'normal'"
-             [style.text-decoration]="element.common_configs.suffix.design.text.underline ? 'underline':element.common_configs.suffix.design.text.inherit ? '':'unset'"
-             [style.text-align]="element.common_configs.suffix.design.text.horizontal_alignment === 'inherit' ? element.common_configs.suffix.design.text.horizontal_alignment : element.common_configs.suffix.design.text.horizontal_alignment"
-             [style.font-family]="element.common_configs.suffix.design.text.police.name"
-             [style.font-size]="element.common_configs.suffix.design.text.police.size === 0 ? '': element.common_configs.suffix.design.text.police.size.toString() + 'px'">
-          {{element.common_configs.suffix.name}}
-        </div>
+        <app-sticker-field [stickerField]="element" [sticker]="sticker" [generation]="generation"></app-sticker-field>
       }
     </div>
   </div>

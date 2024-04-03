@@ -18,7 +18,7 @@ import {MatSelect} from "@angular/material/select";
 import {MatTooltip} from "@angular/material/tooltip";
 import {NgForOf, NgIf} from "@angular/common";
 import {StickerFieldDesign} from "../../model/sticker-field-design";
-import {FontService} from "../../font.service";
+import {StickerService} from "../../sticker.service";
 import {NgxColorsModule} from "ngx-colors";
 
 @Component({
@@ -60,7 +60,7 @@ export class StickerFieldConfigComponent implements OnInit {
   fontList: string[] = []
 
   constructor(
-    private FontService: FontService
+    private FontService: StickerService
   ) {
   }
 

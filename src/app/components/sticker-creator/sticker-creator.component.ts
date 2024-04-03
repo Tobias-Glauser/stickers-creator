@@ -39,6 +39,7 @@ import {CdkScrollable} from "@angular/cdk/overlay";
 import {GeneralStickerConfigsComponent} from "../general-sticker-configs/general-sticker-configs.component";
 import {Sticker} from "../../model/sticker";
 import {StickerFieldDesign} from "../../model/sticker-field-design";
+import {StickerService} from "../../sticker.service";
 
 @Component({
   selector: 'app-sticker-creator',
@@ -129,7 +130,7 @@ export class StickerCreatorComponent {
       italic: false,
       underline: false,
       inherit: true,
-      vertical_alignment: 'flex-start',
+      vertical_alignment: 'baseline',
       horizontal_alignment: 'inherit',
       police: {
         name: null,

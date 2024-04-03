@@ -8,7 +8,7 @@ import {
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
 import {MatFormField, MatLabel, MatSuffix} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
-import {FontService} from "../../font.service";
+import {StickerService} from "../../sticker.service";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {NgForOf, NgIf} from "@angular/common";
 import {MatButtonToggle, MatButtonToggleGroup} from "@angular/material/button-toggle";
@@ -53,7 +53,7 @@ export class GeneralStickerConfigsComponent implements OnInit {
   fontList: string[] = []
 
   constructor(
-    private FontService: FontService
+    private FontService: StickerService
   ) {
   }
 
