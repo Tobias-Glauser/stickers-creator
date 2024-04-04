@@ -1,5 +1,3 @@
-import {Paddings} from "./paddings";
-
 export interface Image {
   discriminator: 'image',
   name: string,

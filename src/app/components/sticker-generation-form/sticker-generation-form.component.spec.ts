@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { StickerGenerationFormComponent } from './sticker-generation-form.component';
+import {StickerGenerationFormComponent} from './sticker-generation-form.component';
 
 describe('StickerGenerationFormComponent', () => {
   let component: StickerGenerationFormComponent;
@@ -11,7 +11,7 @@ describe('StickerGenerationFormComponent', () => {
       imports: [StickerGenerationFormComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(StickerGenerationFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

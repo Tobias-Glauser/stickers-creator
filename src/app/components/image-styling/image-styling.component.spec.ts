@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ImageStylingComponent } from './image-styling.component';
+import {ImageStylingComponent} from './image-styling.component';
 
 describe('ImageStylingComponent', () => {
   let component: ImageStylingComponent;
@@ -11,7 +11,7 @@ describe('ImageStylingComponent', () => {
       imports: [ImageStylingComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ImageStylingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { GeneralStickerConfigsComponent } from './general-sticker-configs.component';
+import {GeneralStickerConfigsComponent} from './general-sticker-configs.component';
 
 describe('GeneralStickerConfigsComponent', () => {
   let component: GeneralStickerConfigsComponent;
@@ -11,7 +11,7 @@ describe('GeneralStickerConfigsComponent', () => {
       imports: [GeneralStickerConfigsComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(GeneralStickerConfigsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

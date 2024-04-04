@@ -16,7 +16,7 @@ import {MatIcon} from "@angular/material/icon";
 import {MatTooltip} from "@angular/material/tooltip";
 import {Sticker} from "../../model/sticker";
 import {FormsModule} from "@angular/forms";
-import {NgxColorsModule, NgxColorsTriggerDirective} from "ngx-colors";
+import {NgxColorsModule} from "ngx-colors";
 import {ImageConfigComponent} from "../image-config/image-config.component";
 import {MatDivider} from "@angular/material/divider";
 

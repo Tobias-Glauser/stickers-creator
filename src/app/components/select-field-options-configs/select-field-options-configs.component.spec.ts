@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SelectFieldOptionsConfigsComponent } from './select-field-options-configs.component';
+import {SelectFieldOptionsConfigsComponent} from './select-field-options-configs.component';
 
 describe('SelectFieldOptionsConfigsComponent', () => {
   let component: SelectFieldOptionsConfigsComponent;
@@ -11,7 +11,7 @@ describe('SelectFieldOptionsConfigsComponent', () => {
       imports: [SelectFieldOptionsConfigsComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(SelectFieldOptionsConfigsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FieldCommonsConfigsComponent } from './field-commons-configs.component';
+import {FieldCommonsConfigsComponent} from './field-commons-configs.component';
 
 describe('FieldCommonsConfigsComponent', () => {
   let component: FieldCommonsConfigsComponent;
@@ -11,7 +11,7 @@ describe('FieldCommonsConfigsComponent', () => {
       imports: [FieldCommonsConfigsComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(FieldCommonsConfigsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

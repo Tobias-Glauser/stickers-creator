@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Paddings} from "./model/paddings";
 import {DateField} from "./model/date-field";
 import {NumberField} from "./model/number-field";
@@ -62,7 +62,7 @@ export class StickerService {
   ]
 
   getFontsList() {
-    return this.fontList.sort()
+    return this.fontList.sort((a, b) => a.localeCompare(b))
   }
 
   getPaddings(paddings: Paddings) {
@@ -72,13 +72,13 @@ export class StickerService {
   getFieldText(field: DateField | NumberField | TextField | SelectField, generation: boolean) {
     switch (field.discriminator) {
       case "text":
-        return field.value || (generation ? '' : field.common_configs.name)
+        return field.value ?? (generation ? '' : field.common_configs.name)
       case "number":
-        return field.value?.toString() || (generation ? '' : field.common_configs.name)
+        return field.value?.toString() ?? (generation ? '' : field.common_configs.name)
       case "date":
-        return field.value?.toLocaleDateString() || (generation ? '' : field.common_configs.name)
+        return field.value?.toLocaleDateString() ?? (generation ? '' : field.common_configs.name)
       case "select":
-        return field.value?.name || (generation ? '' : field.common_configs.name)
+        return field.value?.name ?? (generation ? '' : field.common_configs.name)
     }
   }
 }

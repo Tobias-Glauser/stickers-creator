@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PreSuffixConfigComponent } from './pre-suffix-config.component';
+import {PreSuffixConfigComponent} from './pre-suffix-config.component';
 
 describe('PresuffixconfigComponent', () => {
   let component: PreSuffixConfigComponent;

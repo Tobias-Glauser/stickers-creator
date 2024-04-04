@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { StickerCreatorComponent } from './sticker-creator.component';
+import {StickerCreatorComponent} from './sticker-creator.component';
 
 describe('StickerCreatorComponent', () => {
   let component: StickerCreatorComponent;
@@ -11,7 +11,7 @@ describe('StickerCreatorComponent', () => {
       imports: [StickerCreatorComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(StickerCreatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

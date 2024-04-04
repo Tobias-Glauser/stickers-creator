@@ -1,6 +1,7 @@
-<div class="sticker" *ngIf="sticker"
+<div class="sticker" *ngIf="sticker" #stickerBackgrounds
      [style.width]="'calc('+sticker.size.size_x + 'cm/'+sticker.size.horizontal_number + ')'"
-     [style.height]="'calc('+sticker.size.size_y + 'cm/'+sticker.size.vertical_number + ')'">
+     [style.height]="'calc('+sticker.size.size_y + 'cm/'+sticker.size.vertical_number + ')'"
+     [style]="getBackgroundStyle()">
   <div [style.padding]="StickerService.getPaddings(sticker.global_design.paddings)"
        [style.align-items]="sticker.global_design.text.vertical_alignment"
        [style.color]="sticker.global_design.text.police.color"
@@ -9,21 +10,11 @@
        [style.text-decoration]="sticker.global_design.text.underline ? 'underline':'unset'"
        [style.font-family]="sticker.global_design.text.police.name"
        [style.font-size]="sticker.global_design.text.police.size.toString() + 'px'">
-    <div class="sticker-field-full-width">
+    <div class="sticker-field-full-width"
+         [style.background-color]="'transparent'">
       @for (element of sticker.fields; track element.common_configs.name) {
         <app-sticker-field [stickerField]="element" [sticker]="sticker" [generation]="generation"></app-sticker-field>
       }
     </div>
   </div>
-<!--  @for (background of sticker.global_design.backgrounds) {-->
-<!--    @if () {-->
-<!--      <div [style.background-image]="" ]>-->
-<!--        -->
-<!--      </div>-->
-<!--    } @else {-->
-<!--      <div>-->
-<!--        -->
-<!--      </div>-->
-<!--    }-->
-<!--  }-->
 </div>

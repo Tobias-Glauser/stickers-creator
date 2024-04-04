@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 import {StickerCreatorComponent} from "./components/sticker-creator/sticker-creator.component";
 import {NotFoundComponent} from "./components/not-found/not-found.component";
 import {StickerGeneratorComponent} from "./components/sticker-generator/sticker-generator.component";

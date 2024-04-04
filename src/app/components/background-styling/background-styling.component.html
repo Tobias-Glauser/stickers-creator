@@ -60,13 +60,13 @@
           <div>
             <mat-button-toggle-group class="no-check" hideSingleSelectionIndicator>
               <mat-button-toggle matTooltip="Remplir"
-                                 [checked]="isCover()"
-                                 (change)="$event.source.checked ? updateCoverSize(): ''">
+                                 [checked]="isCover()" #coverButton
+                                 (change)="coverButton.checked ? updateCoverSize(): ''">
                 <mat-icon>fit_screen</mat-icon>
               </mat-button-toggle>
-              <mat-button-toggle matTooltip="Image complète"
+              <mat-button-toggle matTooltip="Image complète" #containButton
                                  [checked]="isContain()"
-                                 (change)="$event.source.checked ? updateContainSize(): ''">
+                                 (change)="containButton.checked ? updateContainSize(): ''">
                 <mat-icon>fullscreen</mat-icon>
               </mat-button-toggle>
             </mat-button-toggle-group>

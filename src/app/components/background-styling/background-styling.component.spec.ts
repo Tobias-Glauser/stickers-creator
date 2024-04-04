@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BackgroundStylingComponent } from './background-styling.component';
+import {BackgroundStylingComponent} from './background-styling.component';
 
 describe('ColorStylingComponent', () => {
   let component: BackgroundStylingComponent;

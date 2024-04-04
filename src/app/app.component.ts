@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import {Component, HostListener, ViewChild} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {StickerCreatorComponent} from "./components/sticker-creator/sticker-creator.component";
 import {MatToolbar} from "@angular/material/toolbar";

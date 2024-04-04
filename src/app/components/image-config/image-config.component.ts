@@ -5,6 +5,7 @@ import {Image} from "../../model/image";
 import {NgIf} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
 import {ImageStylingComponent} from "../image-styling/image-styling.component";
+import {BackgroundStylingComponent} from "../background-styling/background-styling.component";
 
 @Component({
   selector: 'app-image-config',
@@ -14,7 +15,8 @@ import {ImageStylingComponent} from "../image-styling/image-styling.component";
     NgIf,
     MatIconButton,
     MatIcon,
-    ImageStylingComponent
+    ImageStylingComponent,
+    BackgroundStylingComponent
   ],
   templateUrl: './image-config.component.html',
   styleUrl: './image-config.component.scss'

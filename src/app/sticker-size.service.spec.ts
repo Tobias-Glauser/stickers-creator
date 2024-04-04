@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { StickerSizeService } from './sticker-size.service';
+import {StickerSizeService} from './sticker-size.service';
 
 describe('StickerSizeService', () => {
   let service: StickerSizeService;

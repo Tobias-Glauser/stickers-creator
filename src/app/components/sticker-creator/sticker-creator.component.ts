@@ -7,7 +7,7 @@ import {MatFormField, MatFormFieldModule, MatHint, MatLabel} from "@angular/mate
 import {MatInput, MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {MatCheckbox} from "@angular/material/checkbox";
-import {MatCard, MatCardHeader, MatCardModule} from "@angular/material/card";
+import {MatCardModule} from "@angular/material/card";
 import {
   MatAccordion,
   MatExpansionPanel,
@@ -15,17 +15,13 @@ import {
   MatExpansionPanelTitle
 } from "@angular/material/expansion";
 import {MatDivider} from "@angular/material/divider";
-import {
-  MatDatepicker,
-  MatDatepickerInput,
-  MatDatepickerToggle
-} from "@angular/material/datepicker";
+import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
 import {MatNativeDateModule, MatOption} from "@angular/material/core";
 import {MatSelect} from "@angular/material/select";
 import {SelectField} from "../../model/select-field";
 import {TextField} from "../../model/text-field";
 import {DateField} from "../../model/date-field";
-import { NumberField } from '../../model/number-field';
+import {NumberField} from '../../model/number-field';
 import {FieldCommonConfigs} from "../../model/field-common-configs";
 import {PreSuffixConfigComponent} from "../pre-suffix-config/pre-suffix-config.component";
 import {FieldCommonsConfigsComponent} from "../field-commons-configs/field-commons-configs.component";
@@ -39,7 +35,6 @@ import {CdkScrollable} from "@angular/cdk/overlay";
 import {GeneralStickerConfigsComponent} from "../general-sticker-configs/general-sticker-configs.component";
 import {Sticker} from "../../model/sticker";
 import {StickerFieldDesign} from "../../model/sticker-field-design";
-import {StickerService} from "../../sticker.service";
 import {Color} from "../../model/color";
 import {Image} from "../../model/image";
 import {ColorConfigsComponent} from "../color-configs/color-configs.component";
@@ -216,43 +211,39 @@ export class StickerCreatorComponent {
   }
 
   addBackground(selection: string) {
-    switch (selection) {
-      case 'color': {
-        this.sticker.global_design.backgrounds.push({
-          discriminator: 'color',
-          name: 'sans nom',
-          value: '',
-          style: {
-            paddings: {
-              left: 0,
-              top: 0,
-            },
-            size: {
-              x: 400,
-              y: 400,
-            }
+    if (selection === 'color') {
+      this.sticker.global_design.backgrounds.push({
+        discriminator: 'color',
+        name: 'sans nom',
+        value: '',
+        style: {
+          paddings: {
+            left: 0,
+            top: 0,
+          },
+          size: {
+            x: 400,
+            y: 400,
           }
-        } as Color)
-        break
-      }
-      default: {
-        this.sticker.global_design.backgrounds.push({
-          discriminator: 'image',
-          name: "Pas d'image",
-          type: '',
-          file: '',
-          style: {
-            paddings: {
-              left: 0,
-              top: 0,
-            },
-            size: {
-              x: 0,
-              y: 0,
-            }
+        }
+      } as Color)
+    } else {
+      this.sticker.global_design.backgrounds.push({
+        discriminator: 'image',
+        name: "Pas d'image",
+        type: '',
+        file: '',
+        style: {
+          paddings: {
+            left: 0,
+            top: 0,
+          },
+          size: {
+            x: 0,
+            y: 0,
           }
-        } as Image)
-      }
+        }
+      } as Image)
     }
   }
 

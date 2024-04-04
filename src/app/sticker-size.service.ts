@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Size} from "./model/size";
 
 @Injectable({
@@ -21,7 +21,7 @@ export class StickerSizeService {
 
   getPixelSizeX() {
     if (this.size) {
-      return Math.round(this.size.size_x * this.pixelFactor)
+      return Math.round(this.size.size_x / this.size.horizontal_number * this.pixelFactor)
     } else {
       return 0
     }
@@ -29,7 +29,7 @@ export class StickerSizeService {
 
   getPixelSizeY() {
     if (this.size) {
-      return Math.round(this.size.size_y * this.pixelFactor)
+      return Math.round(this.size.size_y / this.size.vertical_number * this.pixelFactor)
     } else {
       return 0
     }

@@ -1,6 +1,3 @@
-import {Paddings} from "./paddings";
-import {ImageStyle} from "./image";
-
 export interface Color {
   discriminator: 'color',
   name: string,
