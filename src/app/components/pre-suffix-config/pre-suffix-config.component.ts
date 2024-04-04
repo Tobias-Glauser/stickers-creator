@@ -12,7 +12,7 @@ import {MatTooltip} from "@angular/material/tooltip";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {MatMiniFabButton} from "@angular/material/button";
 import {GeneralStickerConfigsComponent} from "../general-sticker-configs/general-sticker-configs.component";
-import {StickerFieldConfigComponent} from "../sticker-field-config/sticker-field-config.component";
+import {StickerFieldStylingComponent} from "../sticker-field-styling/sticker-field-styling.component";
 
 @Component({
   selector: 'app-pre-suffix-config',
@@ -33,7 +33,7 @@ import {StickerFieldConfigComponent} from "../sticker-field-config/sticker-field
     MatMiniFabButton,
     MatMenuTrigger,
     GeneralStickerConfigsComponent,
-    StickerFieldConfigComponent
+    StickerFieldStylingComponent
   ],
   templateUrl: './pre-suffix-config.component.html',
   styleUrl: './pre-suffix-config.component.scss'

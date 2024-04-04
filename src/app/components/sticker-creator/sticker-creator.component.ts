@@ -40,6 +40,7 @@ import {Image} from "../../model/image";
 import {ColorConfigsComponent} from "../color-configs/color-configs.component";
 import {ImageConfigComponent} from "../image-config/image-config.component";
 import {StickerSizeService} from "../../sticker-size.service";
+import {StickerFieldConfigsComponent} from "../sticker-field-configs/sticker-field-configs.component";
 
 @Component({
   selector: 'app-sticker-creator',
@@ -85,7 +86,8 @@ import {StickerSizeService} from "../../sticker-size.service";
     MatExpansionPanelTitle,
     GeneralStickerConfigsComponent,
     ColorConfigsComponent,
-    ImageConfigComponent
+    ImageConfigComponent,
+    StickerFieldConfigsComponent
   ],
   templateUrl: './sticker-creator.component.html',
   styleUrl: './sticker-creator.component.scss'
@@ -147,6 +149,45 @@ export class StickerCreatorComponent {
     }
   }
 
+  defaultImage: Image = {
+    discriminator: 'image',
+    background: true,
+    name: "Pas d'image",
+    type: '',
+    file: '',
+    style: {
+      paddings: {
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
+      },
+      size: {
+        x: 0,
+        y: 0,
+      }
+    }
+  }
+
+  defaultColor: Color = {
+    discriminator: 'color',
+    background: true,
+    name: 'sans nom',
+    value: '',
+    style: {
+      paddings: {
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
+      },
+      size: {
+        x: 400,
+        y: 400,
+      }
+    }
+  }
+
   constructor(
     private StickerSizeService: StickerSizeService
   ) {
@@ -200,50 +241,28 @@ export class StickerCreatorComponent {
         } as DateField)
         break
       }
-      default: {
+      case 'text': {
         this.sticker.fields.push({
           discriminator: 'text',
           common_configs: infos,
           value: null
         } as TextField)
+        break
+      }
+      case 'image': {
+        break
+      }
+      case 'color': {
+        break
       }
     }
   }
 
   addBackground(selection: string) {
     if (selection === 'color') {
-      this.sticker.global_design.backgrounds.push({
-        discriminator: 'color',
-        name: 'sans nom',
-        value: '',
-        style: {
-          paddings: {
-            left: 0,
-            top: 0,
-          },
-          size: {
-            x: 400,
-            y: 400,
-          }
-        }
-      } as Color)
+      this.sticker.global_design.backgrounds.push(structuredClone(this.defaultColor))
     } else {
-      this.sticker.global_design.backgrounds.push({
-        discriminator: 'image',
-        name: "Pas d'image",
-        type: '',
-        file: '',
-        style: {
-          paddings: {
-            left: 0,
-            top: 0,
-          },
-          size: {
-            x: 0,
-            y: 0,
-          }
-        }
-      } as Image)
+      this.sticker.global_design.backgrounds.push(structuredClone(this.defaultImage))
     }
   }
 

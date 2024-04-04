@@ -22,7 +22,7 @@ import {StickerService} from "../../sticker.service";
 import {NgxColorsModule} from "ngx-colors";
 
 @Component({
-  selector: 'app-sticker-field-config',
+  selector: 'app-sticker-field-styling',
   standalone: true,
   imports: [
     GeneralStickerConfigsComponent,
@@ -48,10 +48,10 @@ import {NgxColorsModule} from "ngx-colors";
     NgIf,
     MatIconButton
   ],
-  templateUrl: './sticker-field-config.component.html',
-  styleUrl: './sticker-field-config.component.scss'
+  templateUrl: './sticker-field-styling.component.html',
+  styleUrl: './sticker-field-styling.component.scss'
 })
-export class StickerFieldConfigComponent implements OnInit {
+export class StickerFieldStylingComponent implements OnInit {
 
   @Input({required: true}) design: StickerFieldDesign | undefined
   @Input() disableHorizontalAlignment: boolean = false

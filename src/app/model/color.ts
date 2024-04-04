@@ -1,15 +1,15 @@
+import {Paddings} from "./paddings";
+
 export interface Color {
   discriminator: 'color',
+  background: boolean,
   name: string,
   value: string,
   style: ColorStyle,
 }
 
 export interface ColorStyle {
-  paddings: {
-    top: number,
-    left: number,
-  }
+  paddings: Paddings
   size: {
     x: number,
     y: number

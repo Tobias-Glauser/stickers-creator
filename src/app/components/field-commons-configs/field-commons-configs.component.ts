@@ -4,7 +4,7 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {FieldCommonConfigs} from "../../model/field-common-configs";
 import {NgIf} from "@angular/common";
-import {StickerFieldConfigComponent} from "../sticker-field-config/sticker-field-config.component";
+import {StickerFieldStylingComponent} from "../sticker-field-styling/sticker-field-styling.component";
 
 @Component({
   selector: 'app-field-commons-configs',
@@ -15,7 +15,7 @@ import {StickerFieldConfigComponent} from "../sticker-field-config/sticker-field
     MatInput,
     MatLabel,
     NgIf,
-    StickerFieldConfigComponent
+    StickerFieldStylingComponent
   ],
   templateUrl: './field-commons-configs.component.html',
   styleUrl: './field-commons-configs.component.scss'

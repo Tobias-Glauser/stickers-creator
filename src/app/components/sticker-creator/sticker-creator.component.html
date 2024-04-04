@@ -71,36 +71,7 @@
                   <mat-icon>clear</mat-icon>
                 </button>
               </mat-expansion-panel-header>
-              <mat-accordion>
-                <mat-expansion-panel class="field-property">
-                  <mat-expansion-panel-header>
-                    Préfix
-                  </mat-expansion-panel-header>
-                  <app-pre-suffix-config [presuffix]="element.common_configs.preffix"></app-pre-suffix-config>
-                </mat-expansion-panel>
-
-                <mat-expansion-panel [expanded]="true">
-                  <mat-expansion-panel-header>
-                    Configuration du champ
-                  </mat-expansion-panel-header>
-                  <app-field-commons-configs [field]="element.common_configs"></app-field-commons-configs>
-                </mat-expansion-panel>
-
-                <mat-expansion-panel *ngIf="element.discriminator == 'select'">
-                  <mat-expansion-panel-header>
-                    Options
-                  </mat-expansion-panel-header>
-                  <app-select-field-options-configs [options]="element.options"></app-select-field-options-configs>
-                </mat-expansion-panel>
-
-
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header>
-                    Suffix
-                  </mat-expansion-panel-header>
-                  <app-pre-suffix-config [presuffix]="element.common_configs.suffix"></app-pre-suffix-config>
-                </mat-expansion-panel>
-              </mat-accordion>
+              <app-sticker-field-configs [element]="element"></app-sticker-field-configs>
             </mat-expansion-panel>
           }
         </mat-accordion>
@@ -112,6 +83,8 @@
           <button mat-menu-item (click)="addItem('date')">Date</button>
           <button mat-menu-item (click)="addItem('select')">Sélection</button>
           <button mat-menu-item (click)="addItem('number')">Nombre</button>
+          <button mat-menu-item (click)="addItem('image')">Image</button>
+          <button mat-menu-item (click)="addItem('color')">Color</button>
         </mat-menu>
       </div>
     </mat-expansion-panel>

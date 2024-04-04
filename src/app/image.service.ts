@@ -34,6 +34,7 @@ export class ImageService {
         if (!image) {
           observer.next({
             discriminator: 'image',
+            background: true,
             name: file.name,
             type: file.type,
             file: res.file,
@@ -41,6 +42,8 @@ export class ImageService {
               paddings: {
                 top: 0,
                 left: 0,
+                right: 0,
+                bottom: 0,
               },
               size: {
                 x: res.x,

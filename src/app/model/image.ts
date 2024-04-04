@@ -1,5 +1,8 @@
+import {Paddings} from "./paddings";
+
 export interface Image {
   discriminator: 'image',
+  background: boolean,
   name: string,
   type: string,
   file: string
@@ -7,10 +10,7 @@ export interface Image {
 }
 
 export interface ImageStyle {
-  paddings: {
-    top: number,
-    left: number,
-  }
+  paddings: Paddings
   size: {
     x: number,
     y: number

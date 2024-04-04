@@ -17,6 +17,7 @@ import {MatTooltip} from "@angular/material/tooltip";
 import {ColorStyle} from "../../model/color";
 import {StickerSizeService} from "../../sticker-size.service";
 import {MatSlideToggle} from "@angular/material/slide-toggle";
+import {ImageStyle} from "../../model/image";
 
 @Component({
   selector: 'app-background-styling',
@@ -46,8 +47,9 @@ import {MatSlideToggle} from "@angular/material/slide-toggle";
 })
 export class BackgroundStylingComponent {
 
-  @Input() backgroundStyle: ColorStyle | undefined
+  @Input() style: ColorStyle | ImageStyle | undefined
   @Input() isImage: boolean = false
+  @Input() isBackground: boolean = false
 
   constructor(
     public StickerSizeService: StickerSizeService
@@ -55,7 +57,7 @@ export class BackgroundStylingComponent {
   }
 
   ngOnInit() {
-    console.log(this.backgroundStyle?.size)
+    console.log(this.style?.size)
   }
 
   displayWith(value: number) {
@@ -63,119 +65,124 @@ export class BackgroundStylingComponent {
   }
 
   getContainSize() {
-    if (!this.backgroundStyle || !this.isImage) {
+    if (!this.style || !this.isImage) {
       return {x: this.StickerSizeService.getPixelSizeX(), y: this.StickerSizeService.getPixelSizeY()}
     }
     let stickerSizeY = this.StickerSizeService.getPixelSizeY()
     let stickerSizeX = this.StickerSizeService.getPixelSizeX()
-    let sizeX = this.backgroundStyle.size.x
-    let sizeY = this.backgroundStyle.size.y
+    let sizeX = this.style.size.x
+    let sizeY = this.style.size.y
     if (sizeX - stickerSizeX < sizeY - stickerSizeY || sizeX - stickerSizeX > 0) {
       console.log('first')
       return {
-        x: stickerSizeY * (this.backgroundStyle.size.x/this.backgroundStyle.size.y),
+        x: stickerSizeY * (this.style.size.x/this.style.size.y),
         y: stickerSizeY
       }
     } else {
       console.log('second')
       return {
         x: stickerSizeX,
-        y: stickerSizeX * (this.backgroundStyle.size.y/this.backgroundStyle.size.x)
+        y: stickerSizeX * (this.style.size.y/this.style.size.x)
       }
     }
   }
 
   updateContainSize() {
-    if (!this.backgroundStyle) {
+    if (!this.style) {
       return
     }
     let newSizes = this.getContainSize()
-    this.backgroundStyle.size.y = newSizes.y
-    this.backgroundStyle.size.x = newSizes.x
-    this.backgroundStyle.paddings.top = 0
-    this.backgroundStyle.paddings.left = 0
+    this.updateSizes(newSizes);
+  }
+
+  private updateSizes(newSizes: { x: number; y: number }) {
+    if (this.style) {
+      this.style.size.y = newSizes.y
+      this.style.size.x = newSizes.x
+      this.style.paddings.top = 0
+      this.style.paddings.left = 0
+      this.style.paddings.bottom = 0
+      this.style.paddings.right = 0
+    }
   }
 
   isContain(): boolean {
-    if (!this.backgroundStyle) {
+    if (!this.style) {
       return false
     }
     if (!this.isImage) {
-      return this.backgroundStyle.size.x === this.StickerSizeService.getPixelSizeX() &&
-        this.backgroundStyle.size.x === this.StickerSizeService.getPixelSizeY();
+      return this.style.size.x === this.StickerSizeService.getPixelSizeX() &&
+        this.style.size.x === this.StickerSizeService.getPixelSizeY();
     }
     let stickerSizeY = this.StickerSizeService.getPixelSizeY()
     let stickerSizeX = this.StickerSizeService.getPixelSizeX()
-    let sizeX = this.backgroundStyle.size.x
-    let sizeY = this.backgroundStyle.size.y
+    let sizeX = this.style.size.x
+    let sizeY = this.style.size.y
 
     return (sizeX < sizeY && stickerSizeX === sizeX) || (sizeY < sizeX && stickerSizeY === sizeY)
   }
 
   getCoverSize() {
-    if (!this.backgroundStyle) {
+    if (!this.style) {
       return {x: 0, y:0}
     }
     let stickerSizeY = this.StickerSizeService.getPixelSizeY()
     let stickerSizeX = this.StickerSizeService.getPixelSizeX()
-    let sizeX = this.backgroundStyle.size.x
-    let sizeY = this.backgroundStyle.size.y
+    let sizeX = this.style.size.x
+    let sizeY = this.style.size.y
     if (sizeX - stickerSizeX > sizeY - stickerSizeY && sizeX - stickerSizeX < 0) {
       console.log('first',sizeX, stickerSizeX, sizeX - stickerSizeX, sizeY, stickerSizeY, sizeY - stickerSizeY, sizeX - stickerSizeX > sizeY - stickerSizeY)
       return {
-        x: stickerSizeY * (this.backgroundStyle.size.x/this.backgroundStyle.size.y),
+        x: stickerSizeY * (this.style.size.x/this.style.size.y),
         y: stickerSizeY
       }
     } else {
       console.log('second',sizeX, stickerSizeX, sizeX - stickerSizeX, sizeY, stickerSizeY, sizeY - stickerSizeY, sizeX - stickerSizeX > sizeY - stickerSizeY)
       return {
         x: stickerSizeX,
-        y: stickerSizeX * (this.backgroundStyle.size.y/this.backgroundStyle.size.x)
+        y: stickerSizeX * (this.style.size.y/this.style.size.x)
       }
     }
   }
 
   updateCoverSize() {
-    if (!this.backgroundStyle) {
+    if (!this.style) {
       return
     }
     let newSizes = this.getCoverSize()
-    this.backgroundStyle.size.y = newSizes.y
-    this.backgroundStyle.size.x = newSizes.x
-    this.backgroundStyle.paddings.top = 0
-    this.backgroundStyle.paddings.left = 0
+    this.updateSizes(newSizes)
   }
 
   isCover() {
-    if (!this.backgroundStyle) {
+    if (!this.style) {
       return false
     }
     let stickerSizeY = this.StickerSizeService.getPixelSizeY()
     let stickerSizeX = this.StickerSizeService.getPixelSizeX()
-    let sizeX = this.backgroundStyle.size.x
-    let sizeY = this.backgroundStyle.size.y
+    let sizeX = this.style.size.x
+    let sizeY = this.style.size.y
 
     return (sizeX > sizeY && stickerSizeX === sizeX) || (sizeY > sizeX && stickerSizeY === sizeY)
   }
 
   onWidthChange(new_x: number, keepAspectRatio: boolean) {
-    if (!this.backgroundStyle) {
+    if (!this.style) {
       return
     }
     if (keepAspectRatio) {
-      this.backgroundStyle.size.y = new_x * (this.backgroundStyle.size.y/this.backgroundStyle.size.x)
+      this.style.size.y = new_x * (this.style.size.y/this.style.size.x)
     }
-    this.backgroundStyle.size.x = new_x
+    this.style.size.x = new_x
   }
 
   onHeightChange(new_y: number, keepAspectRatio: boolean) {
-    console.log(this.backgroundStyle?.size.y, new_y, this.backgroundStyle?.size.x, keepAspectRatio)
-    if (!this.backgroundStyle) {
+    console.log(this.style?.size.y, new_y, this.style?.size.x, keepAspectRatio)
+    if (!this.style) {
       return
     }
     if (keepAspectRatio) {
-      this.backgroundStyle.size.x = new_y * (this.backgroundStyle.size.x/this.backgroundStyle.size.y)
+      this.style.size.x = new_y * (this.style.size.x/this.style.size.y)
     }
-    this.backgroundStyle.size.y = new_y
+    this.style.size.y = new_y
   }
 }

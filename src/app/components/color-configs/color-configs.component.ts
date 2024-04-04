@@ -3,7 +3,7 @@ import {FormsModule} from "@angular/forms";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {NgIf} from "@angular/common";
-import {StickerFieldConfigComponent} from "../sticker-field-config/sticker-field-config.component";
+import {StickerFieldStylingComponent} from "../sticker-field-styling/sticker-field-styling.component";
 import {BackgroundStylingComponent} from "../background-styling/background-styling.component";
 import {NgxColorsModule} from "ngx-colors";
 import {MatTooltip} from "@angular/material/tooltip";
@@ -18,7 +18,7 @@ import {Color} from "../../model/color";
     MatInput,
     MatLabel,
     NgIf,
-    StickerFieldConfigComponent,
+    StickerFieldStylingComponent,
     BackgroundStylingComponent,
     NgxColorsModule,
     MatTooltip

@@ -1,18 +1,18 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {StickerFieldConfigComponent} from './sticker-field-config.component';
+import {StickerFieldStylingComponent} from './sticker-field-styling.component';
 
 describe('StickerFieldConfigComponent', () => {
-  let component: StickerFieldConfigComponent;
-  let fixture: ComponentFixture<StickerFieldConfigComponent>;
+  let component: StickerFieldStylingComponent;
+  let fixture: ComponentFixture<StickerFieldStylingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StickerFieldConfigComponent]
+      imports: [StickerFieldStylingComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(StickerFieldConfigComponent);
+    fixture = TestBed.createComponent(StickerFieldStylingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
