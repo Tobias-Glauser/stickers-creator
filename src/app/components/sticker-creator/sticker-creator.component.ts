@@ -171,7 +171,7 @@ export class StickerCreatorComponent {
 
   defaultColor: Color = {
     discriminator: 'color',
-    background: true,
+    background: false,
     name: 'sans nom',
     value: '',
     style: {
@@ -250,9 +250,12 @@ export class StickerCreatorComponent {
         break
       }
       case 'image': {
+        this.sticker.fields.push(structuredClone(this.defaultColor))
+
         break
       }
       case 'color': {
+        this.sticker.fields.push(structuredClone(this.defaultImage))
         break
       }
     }
@@ -260,9 +263,13 @@ export class StickerCreatorComponent {
 
   addBackground(selection: string) {
     if (selection === 'color') {
-      this.sticker.global_design.backgrounds.push(structuredClone(this.defaultColor))
+      let background = structuredClone(this.defaultColor)
+      background.background = true
+      this.sticker.global_design.backgrounds.push(background)
     } else {
-      this.sticker.global_design.backgrounds.push(structuredClone(this.defaultImage))
+      let background = structuredClone(this.defaultImage)
+      background.background = true
+      this.sticker.global_design.backgrounds.push(background)
     }
   }
 
@@ -276,7 +283,7 @@ export class StickerCreatorComponent {
 
   protected readonly structuredClone = structuredClone;
 
-  getFieldType(discriminator: "text" | "select" | "date" | "number") {
+  getFieldType(discriminator: "text" | "select" | "date" | "number" | "color" | "image") {
     switch (discriminator) {
       case "select":
         return 'Sélection'
@@ -286,10 +293,14 @@ export class StickerCreatorComponent {
         return 'Nombre'
       case "text":
         return 'Texte'
+      case "color":
+        return "Couleur"
+      case "image":
+        return "Image"
     }
   }
 
-  getIconForFieldType(discriminator: "text" | "select" | "date" | "number") {
+  getIconForFieldType(discriminator: "text" | "select" | "date" | "number" | "color" | "image") {
     switch (discriminator) {
       case "select":
         return 'fact_check'
@@ -299,14 +310,22 @@ export class StickerCreatorComponent {
         return 'pin'
       case "text":
         return 'keyboard'
+      case "color":
+        return "palette"
+      case "image":
+        return "insert_photo"
     }
   }
 
-  removeField(field: SelectField | TextField | DateField | NumberField) {
+  removeField(field: SelectField | TextField | DateField | NumberField | Color | Image) {
     this.sticker.fields = this.sticker.fields.filter((currentField) => currentField !== field)
   }
 
   removeBackground(field: Color | Image) {
     this.sticker.global_design.backgrounds = this.sticker.global_design.backgrounds.filter((currentField) => currentField !== field)
+  }
+
+  getFormFields(): (TextField | DateField | NumberField | SelectField)[] {
+    return this.sticker.fields.filter((field) => field.discriminator !== 'color' && field.discriminator !== 'image') as (TextField | DateField | NumberField | SelectField)[]
   }
 }

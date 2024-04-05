@@ -20,7 +20,7 @@ import {MatSlideToggle} from "@angular/material/slide-toggle";
 import {ImageStyle} from "../../model/image";
 
 @Component({
-  selector: 'app-background-styling',
+  selector: 'app-asset-styling',
   standalone: true,
   imports: [
     FormsModule,
@@ -42,10 +42,10 @@ import {ImageStyle} from "../../model/image";
     MatMenuTrigger,
     MatSlideToggle
   ],
-  templateUrl: './background-styling.component.html',
-  styleUrl: './background-styling.component.scss'
+  templateUrl: './asset-styling.component.html',
+  styleUrl: './asset-styling.component.scss'
 })
-export class BackgroundStylingComponent {
+export class AssetStylingComponent {
 
   @Input() style: ColorStyle | ImageStyle | undefined
   @Input() isImage: boolean = false
@@ -57,7 +57,7 @@ export class BackgroundStylingComponent {
   }
 
   ngOnInit() {
-    console.log(this.style?.size)
+    console.log(this.isBackground)
   }
 
   displayWith(value: number) {
@@ -65,8 +65,8 @@ export class BackgroundStylingComponent {
   }
 
   getContainSize() {
-    if (!this.style || !this.isImage) {
-      return {x: this.StickerSizeService.getPixelSizeX(), y: this.StickerSizeService.getPixelSizeY()}
+    if (!this.style) {
+      return {x: 0, y: 0}
     }
     let stickerSizeY = this.StickerSizeService.getPixelSizeY()
     let stickerSizeX = this.StickerSizeService.getPixelSizeX()
@@ -123,8 +123,8 @@ export class BackgroundStylingComponent {
   }
 
   getCoverSize() {
-    if (!this.style) {
-      return {x: 0, y:0}
+    if (!this.style || !this.isImage) {
+      return {x: this.StickerSizeService.getPixelSizeX(), y: this.StickerSizeService.getPixelSizeY()}
     }
     let stickerSizeY = this.StickerSizeService.getPixelSizeY()
     let stickerSizeX = this.StickerSizeService.getPixelSizeX()

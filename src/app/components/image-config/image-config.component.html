@@ -7,9 +7,5 @@
       <mat-icon>clear</mat-icon>
     </button>
   </div>
-  <app-background-styling [style]="image?.style" [isImage]="true" *ngIf="image && image.file"></app-background-styling>
+  <app-asset-styling [style]="image?.style" [isImage]="true" [isBackground]="image.background" *ngIf="image && image.file"></app-asset-styling>
 </div>
-
-
-
-

@@ -5,7 +5,7 @@ import {Image} from "../../model/image";
 import {NgIf} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
 import {ImageStylingComponent} from "../image-styling/image-styling.component";
-import {BackgroundStylingComponent} from "../background-styling/background-styling.component";
+import {AssetStylingComponent} from "../asset-styling/asset-styling.component";
 
 @Component({
   selector: 'app-image-config',
@@ -16,7 +16,7 @@ import {BackgroundStylingComponent} from "../background-styling/background-styli
     MatIconButton,
     MatIcon,
     ImageStylingComponent,
-    BackgroundStylingComponent
+    AssetStylingComponent
   ],
   templateUrl: './image-config.component.html',
   styleUrl: './image-config.component.scss'
@@ -24,7 +24,6 @@ import {BackgroundStylingComponent} from "../background-styling/background-styli
 export class ImageConfigComponent {
 
   @Input() image: Image | null = null
-  @Input() background: boolean = false
   @Output() imageChange = new EventEmitter<Image | null>()
 
   constructor(
@@ -44,7 +43,11 @@ export class ImageConfigComponent {
   }
 
   onImageRemove() {
-    this.image = null
+    if (this.image) {
+      this.image.file = ''
+      this.image.name = ''
+      this.image.type = ''
+    }
     this.imageChange.emit(this.image)
   }
 }

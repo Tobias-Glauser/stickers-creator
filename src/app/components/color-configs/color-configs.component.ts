@@ -4,7 +4,7 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {NgIf} from "@angular/common";
 import {StickerFieldStylingComponent} from "../sticker-field-styling/sticker-field-styling.component";
-import {BackgroundStylingComponent} from "../background-styling/background-styling.component";
+import {AssetStylingComponent} from "../asset-styling/asset-styling.component";
 import {NgxColorsModule} from "ngx-colors";
 import {MatTooltip} from "@angular/material/tooltip";
 import {Color} from "../../model/color";
@@ -19,7 +19,7 @@ import {Color} from "../../model/color";
     MatLabel,
     NgIf,
     StickerFieldStylingComponent,
-    BackgroundStylingComponent,
+    AssetStylingComponent,
     NgxColorsModule,
     MatTooltip
   ],
@@ -29,4 +29,5 @@ import {Color} from "../../model/color";
 export class ColorConfigsComponent {
 
   @Input({required: true}) color: Color | undefined
+
 }

@@ -39,7 +39,7 @@
                     <mat-icon>clear</mat-icon>
                   </button>
                 </mat-expansion-panel-header>
-                <app-image-config [image]="background" [background]="true"></app-image-config>
+                <app-image-config [image]="background"></app-image-config>
               </mat-expansion-panel>
             }
           }
@@ -65,13 +65,29 @@
             <mat-expansion-panel cdkDrag class="field-mat-card" hideToggle>
               <mat-expansion-panel-header cdkDragHandle class="dg-handle field-mat-panel-header">
                 <mat-panel-title>
-                  <mat-icon>{{getIconForFieldType(element.discriminator)}}</mat-icon> {{ element.common_configs.name }} ({{ getFieldType(element.discriminator) }})
+                  <mat-icon>{{getIconForFieldType(element.discriminator)}}</mat-icon>
+                  @if (element.discriminator === 'color' || element.discriminator === 'image') {
+                    {{element.name}}
+                  } @else {
+                    {{element.common_configs.name}}
+                  }
+                  ({{ getFieldType(element.discriminator) }})
                 </mat-panel-title>
                 <button mat-icon-button (click)="removeField(element)">
                   <mat-icon>clear</mat-icon>
                 </button>
               </mat-expansion-panel-header>
-              <app-sticker-field-configs [element]="element"></app-sticker-field-configs>
+              @switch (element.discriminator) {
+                @case ('color') {
+                  <app-color-configs [color]="element" ></app-color-configs>
+                }
+                @case ('image') {
+                  <app-image-config [image]="element"></app-image-config>
+                }
+                @default {
+                  <app-sticker-field-configs [element]="element"></app-sticker-field-configs>
+                }
+              }
             </mat-expansion-panel>
           }
         </mat-accordion>
@@ -98,7 +114,7 @@
         </mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <app-sticker-generation-form [sticker]="sticker.fields"></app-sticker-generation-form>
+        <app-sticker-generation-form [sticker]="getFormFields()"></app-sticker-generation-form>
       </mat-card-content>
     </mat-card>
     <mat-card>

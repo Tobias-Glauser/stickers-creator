@@ -18,7 +18,8 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Bas</mat-label>
-              <input matInput type="number" [ngModel]="isBackground ? StickerSizeService.getPixelSizeY() - style.size.y - style.paddings.top : style.paddings.bottom" [disabled]="isBackground">
+              <input matInput type="number" [ngModel]="isBackground ? StickerSizeService.getPixelSizeY() - style.size.y - style.paddings.top : style.paddings.bottom" [disabled]="isBackground"
+                                            (ngModelChange)="style.paddings.bottom = $event">
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Gauche</mat-label>
@@ -27,7 +28,8 @@
             <mat-form-field appearance="outline">
               <mat-label>Droite</mat-label>
               <input matInput type="number" [disabled]="isBackground"
-                     [value]="isBackground ? StickerSizeService.getPixelSizeX() - style.size.x - style.paddings.left : style.paddings.bottom">
+                     [ngModel]="isBackground ? StickerSizeService.getPixelSizeX() - style.size.x - style.paddings.left : style.paddings.right"
+                     (ngModelChange)="style.paddings.right = $event">
             </mat-form-field>
           </div>
         </mat-expansion-panel>

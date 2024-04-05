@@ -1,7 +1,7 @@
 <div class="sticker" *ngIf="sticker" #stickerBackgrounds
      [style.width]="'calc('+sticker.size.size_x + 'cm/'+sticker.size.horizontal_number + ')'"
      [style.height]="'calc('+sticker.size.size_y + 'cm/'+sticker.size.vertical_number + ')'"
-     [style]="getBackgroundStyle()">
+     [style]="getBackgroundAssetsStyle()">
   <div [style.padding]="StickerService.getPaddings(sticker.global_design.paddings)"
        [style.align-items]="sticker.global_design.text.vertical_alignment"
        [style.color]="sticker.global_design.text.police.color"
@@ -12,8 +12,12 @@
        [style.font-size]="sticker.global_design.text.police.size.toString() + 'px'">
     <div class="sticker-field-full-width"
          [style.background-color]="'transparent'">
-      @for (element of sticker.fields; track element.common_configs.name) {
-        <app-sticker-field [stickerField]="element" [sticker]="sticker" [generation]="generation"></app-sticker-field>
+      @for (element of sticker.fields; track element) {
+        @if (element.discriminator !== 'color' && element.discriminator !== 'image') {
+          <app-sticker-field [stickerField]="element" [sticker]="sticker" [generation]="generation"></app-sticker-field>
+        } @else {
+          <app-sticker-asset [asset]="element"></app-sticker-asset>
+        }
       }
     </div>
   </div>

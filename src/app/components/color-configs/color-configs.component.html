@@ -5,6 +5,6 @@
   </mat-form-field>
   <div class="color-selectors">
     <ngx-colors ngx-colors-trigger [(ngModel)]="color.value" matTooltip="Sélection de la couleur"></ngx-colors>
-    <app-background-styling [style]="color.style"></app-background-styling>
+    <app-asset-styling [style]="color.style" [isBackground]="color.background"></app-asset-styling>
   </div>
 </div>

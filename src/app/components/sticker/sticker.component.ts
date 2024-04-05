@@ -4,13 +4,15 @@ import {Sticker} from "../../model/sticker";
 import {StickerService} from "../../sticker.service";
 import {StickerFieldComponent} from "../sticker-field/sticker-field.component";
 import {StickerSizeService} from "../../sticker-size.service";
+import {StickerAssetComponent} from "../sticker-asset/sticker-asset.component";
 
 @Component({
   selector: 'app-sticker',
   standalone: true,
   imports: [
     NgIf,
-    StickerFieldComponent
+    StickerFieldComponent,
+    StickerAssetComponent
   ],
   templateUrl: './sticker.component.html',
   styleUrl: './sticker.component.scss'
@@ -30,7 +32,7 @@ export class StickerComponent {
     return "url('" + imageData + "')"
   }
 
-  getBackgroundStyle() {
+  getBackgroundAssetsStyle() {
     if (!this.sticker) {
       return ''
     }

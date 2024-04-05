@@ -1,18 +1,18 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {BackgroundStylingComponent} from './background-styling.component';
+import {AssetStylingComponent} from './asset-styling.component';
 
 describe('ColorStylingComponent', () => {
-  let component: BackgroundStylingComponent;
-  let fixture: ComponentFixture<BackgroundStylingComponent>;
+  let component: AssetStylingComponent;
+  let fixture: ComponentFixture<AssetStylingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BackgroundStylingComponent]
+      imports: [AssetStylingComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BackgroundStylingComponent);
+    fixture = TestBed.createComponent(AssetStylingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

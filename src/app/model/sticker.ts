@@ -11,7 +11,7 @@ export interface Sticker {
   size: Size,
   name: string,
   global_design: GlobalStickerDesign
-  fields: (SelectField | TextField | DateField | NumberField)[]
+  fields: (SelectField | TextField | DateField | NumberField | Color | Image)[]
 }
 
 export interface PoliceConfig {
