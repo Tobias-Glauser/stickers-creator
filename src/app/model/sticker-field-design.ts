@@ -13,11 +13,12 @@ export interface FieldTextConfig {
 export interface PoliceConfig {
   name: string | null,
   size: number,
-  color: ''
+  color: string
 }
 
 export interface StickerFieldDesign {
   paddings: Paddings,
   text: FieldTextConfig,
-  background: ''
+  background: string,
+  position: string
 }

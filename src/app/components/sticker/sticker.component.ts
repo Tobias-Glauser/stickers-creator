@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {NgIf} from "@angular/common";
 import {Sticker} from "../../model/sticker";
 import {StickerService} from "../../sticker.service";
@@ -26,10 +26,6 @@ export class StickerComponent {
     public StickerService: StickerService,
     public StickerSizeService: StickerSizeService
   ) {
-  }
-
-  getImageUrlProperty(imageData: string) {
-    return "url('" + imageData + "')"
   }
 
   getBackgroundAssetsStyle() {

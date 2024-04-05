@@ -10,13 +10,16 @@
        [style.text-decoration]="sticker.global_design.text.underline ? 'underline':'unset'"
        [style.font-family]="sticker.global_design.text.police.name"
        [style.font-size]="sticker.global_design.text.police.size.toString() + 'px'">
-    <div class="sticker-field-full-width"
-         [style.background-color]="'transparent'">
-      @for (element of sticker.fields; track element) {
+    <div>
+      @for (element of sticker.fields; track element; let i=$index; ) {
         @if (element.discriminator !== 'color' && element.discriminator !== 'image') {
-          <app-sticker-field [stickerField]="element" [sticker]="sticker" [generation]="generation"></app-sticker-field>
+          <div class="{{element.common_configs.design.position}}">
+            <app-sticker-field [stickerField]="element" [sticker]="sticker" [generation]="generation"></app-sticker-field>
+          </div>
         } @else {
-          <app-sticker-asset [asset]="element"></app-sticker-asset>
+          <div class="{{element.style.position}}">
+            <app-sticker-asset [asset]="element"></app-sticker-asset>
+          </div>
         }
       }
     </div>

@@ -33,6 +33,14 @@
             </mat-form-field>
           </div>
         </mat-expansion-panel>
+        <mat-expansion-panel *ngIf="!isBackground">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Positionnement
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-choose-position [element]="style"></app-choose-position>
+        </mat-expansion-panel>
         <mat-expansion-panel [expanded]="true">
           <mat-expansion-panel-header>
             <mat-panel-title>

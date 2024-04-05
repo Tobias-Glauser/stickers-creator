@@ -18,6 +18,8 @@ import {ColorStyle} from "../../model/color";
 import {StickerSizeService} from "../../sticker-size.service";
 import {MatSlideToggle} from "@angular/material/slide-toggle";
 import {ImageStyle} from "../../model/image";
+import {ChoosePositionComponent} from "../choose-position/choose-position.component";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-asset-styling',
@@ -40,7 +42,9 @@ import {ImageStyle} from "../../model/image";
     MatSliderThumb,
     MatTooltip,
     MatMenuTrigger,
-    MatSlideToggle
+    MatSlideToggle,
+    ChoosePositionComponent,
+    NgIf
   ],
   templateUrl: './asset-styling.component.html',
   styleUrl: './asset-styling.component.scss'

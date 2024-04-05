@@ -5,7 +5,7 @@ export interface Image {
   background: boolean,
   name: string,
   type: string,
-  file: string
+  file: string,
   style: ImageStyle
 }
 
@@ -14,5 +14,6 @@ export interface ImageStyle {
   size: {
     x: number,
     y: number
-  }
+  },
+  position: string
 }

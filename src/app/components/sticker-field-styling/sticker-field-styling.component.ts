@@ -20,6 +20,7 @@ import {NgForOf, NgIf} from "@angular/common";
 import {StickerFieldDesign} from "../../model/sticker-field-design";
 import {StickerService} from "../../sticker.service";
 import {NgxColorsModule} from "ngx-colors";
+import {ChoosePositionComponent} from "../choose-position/choose-position.component";
 
 @Component({
   selector: 'app-sticker-field-styling',
@@ -46,7 +47,8 @@ import {NgxColorsModule} from "ngx-colors";
     NgForOf,
     NgxColorsModule,
     NgIf,
-    MatIconButton
+    MatIconButton,
+    ChoosePositionComponent
   ],
   templateUrl: './sticker-field-styling.component.html',
   styleUrl: './sticker-field-styling.component.scss'

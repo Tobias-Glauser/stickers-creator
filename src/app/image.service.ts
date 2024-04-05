@@ -48,7 +48,8 @@ export class ImageService {
               size: {
                 x: res.x,
                 y: res.y
-              }
+              },
+              position: 'full'
             }
           })
         } else {

@@ -5,7 +5,7 @@ export interface Color {
   background: boolean,
   name: string,
   value: string,
-  style: ColorStyle,
+  style: ColorStyle
 }
 
 export interface ColorStyle {
@@ -13,5 +13,6 @@ export interface ColorStyle {
   size: {
     x: number,
     y: number
-  }
+  },
+  position: string
 }

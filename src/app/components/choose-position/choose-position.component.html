@@ -1,0 +1,56 @@
+<div class="position-selection" *ngIf="element">
+  <div>
+    <div matTooltip="Element seul"
+                       [class.selected-position]="element.position === 'full'"
+                       (click)="element.position = 'full'">
+    </div>
+  </div>
+  <div>
+    <div matTooltip="Deux éléments (moitiée gauche)"
+                       [class.selected-position]="element.position === 'half-left'"
+                       (click)="element.position = 'half-left'">
+    </div>
+    <div matTooltip="Deux éléments (moitié droite)"
+                       [class.selected-position]="element.position === 'half-right'"
+                       (click)="element.position = 'half-right'">
+    </div>
+  </div>
+  <div>
+    <div matTooltip="Deux éléments (deux tiers gauches)" class="two-thirds"
+                       [class.selected-position]="element.position === 'two-thirds-left'"
+                       (click)="element.position = 'two-thirds-left'">
+    </div>
+    <div matTooltip="Deux éléments (un tiers droit)"
+                       [class.selected-position]="element.position === 'one-third-right'"
+                       (click)="element.position = 'one-third-right'">
+    </div>
+  </div>
+  <div>
+    <div matTooltip="Deux éléments (un tiers gauche)"
+                       [class.selected-position]="element.position === 'one-third-left'"
+                       (click)="element.position = 'one-third-left'">
+    </div>
+    <div matTooltip="Deux éléments (deux tiers droits)" class="two-thirds"
+                       [class.selected-position]="element.position === 'two-thirds-right'"
+                       (click)="element.position = 'two-thirds-right'">
+    </div>
+  </div>
+  <div>
+    <div matTooltip="Quatre éléments (extrémité gauche)"
+                       [class.selected-position]="element.position === 'forth-left-end'"
+                       (click)="element.position = 'forth-left-end'">
+    </div>
+    <div matTooltip="Quatre éléments (millieu gauche)"
+                       [class.selected-position]="element.position === 'forth-middle-left'"
+                       (click)="element.position = 'forth-middle-left'">
+    </div>
+    <div matTooltip="Quatre éléments (millieu droit)"
+                       [class.selected-position]="element.position === 'forth-middle-right'"
+                       (click)="element.position = 'forth-middle-right'">
+    </div>
+    <div matTooltip="Quatre éléments (extrémité droite)"
+                       [class.selected-position]="element.position === 'forth-right-end'"
+                       (click)="element.position = 'forth-right-end'">
+    </div>
+  </div>
+</div>

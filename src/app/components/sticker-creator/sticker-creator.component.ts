@@ -146,12 +146,13 @@ export class StickerCreatorComponent {
         size: 0,
         color: ''
       }
-    }
+    },
+    position: 'full'
   }
 
   defaultImage: Image = {
     discriminator: 'image',
-    background: true,
+    background: false,
     name: "Pas d'image",
     type: '',
     file: '',
@@ -165,7 +166,8 @@ export class StickerCreatorComponent {
       size: {
         x: 0,
         y: 0,
-      }
+      },
+      position: 'full'
     }
   }
 
@@ -184,7 +186,8 @@ export class StickerCreatorComponent {
       size: {
         x: 400,
         y: 400,
-      }
+      },
+      position: 'full'
     }
   }
 
@@ -249,12 +252,11 @@ export class StickerCreatorComponent {
         } as TextField)
         break
       }
-      case 'image': {
+      case 'color': {
         this.sticker.fields.push(structuredClone(this.defaultColor))
-
         break
       }
-      case 'color': {
+      case 'image': {
         this.sticker.fields.push(structuredClone(this.defaultImage))
         break
       }
