@@ -25,10 +25,10 @@ jobs:
 
       - name: Build Angular App
         run: npm run buildProd
-
-      - name: Deploy to gh pages
-        run: |
-          npx angular-cli-ghpages --dir=dist/your-angular-app
         env:
           CI: true
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+#      - name: Deploy to gh pages
+#        run: |
+#          npx angular-cli-ghpages --dir=dist/your-angular-app
