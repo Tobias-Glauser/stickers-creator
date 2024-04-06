@@ -1,9 +1,0 @@
-div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-div > *:not(mat-form-field){
-  margin-bottom: 22px;
-}
