@@ -16,9 +16,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set user email
-        uses: git config --global user.email "deploy@bot.com"
+        run: git config --global user.email "deploy@bot.com"
       - name: Set user name
-        uses: git config --global user.name "deploy@bot"
+        run: git config --global user.name "deploy@bot"
 
       - name: Adding Node.js
         uses: actions/setup-node@v2
